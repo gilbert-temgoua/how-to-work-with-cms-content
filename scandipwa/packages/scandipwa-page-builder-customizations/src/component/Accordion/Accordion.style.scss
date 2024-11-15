@@ -1,0 +1,100 @@
+$toggle-chevron-size: 20px;
+
+.PBAccordion {
+    .ExpandableContent {
+        padding: 20px 8px;
+
+        @include desktop {
+            padding: 20px;
+        }
+
+        &-Heading {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            cursor: pointer;
+        }
+
+        &-Content {
+            &_useOnDesktop {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+            }
+
+            &_isContentExpandedDesktop {
+                opacity: 1;
+                max-height: 100%;
+            }
+
+            p {
+                margin: 16px 0 7px;
+
+                @include mobile {
+                    line-height: 20px !important; // overriding page builder's defined only for mobile
+                }
+            }
+        }
+
+        &_useOnDesktop {
+            cursor: pointer;
+            border-block-start: 1px solid var(--expandable-content-divider-color);
+
+            &:last-of-type {
+                border-block-end: 1px solid var(--expandable-content-divider-color);
+            }
+
+            .AddIcon,
+            .MinusIcon,
+            .ChevronIcon {
+                width: $toggle-chevron-size;
+                height: $toggle-chevron-size;
+            }
+
+            .ExpandableContent {
+                &-Button {
+                    padding-block: 0;
+                }
+
+                &-Content {
+                    @include desktop {
+                        margin-block-start: 0;
+                    }
+
+                    .pagebuilder-button {
+                        &-primary {
+                            color: #000;
+                            width: unset;
+                            margin-top: 12px;
+                        }
+
+                        &-secondary {
+                            background: transparent;
+                            border-radius: 2px;
+                            border: 2px solid var(--primary-base-color);
+                            color: var(--primary-base-color);
+                            width: unset;
+                            margin-top: 12px;
+
+
+                            &:hover {
+                                background: none;
+                            }
+                        }
+
+                        &-link {
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 14px !important;
+                            text-transform: uppercase;
+                            line-height: 18px;
+                            margin: 12px 0 10px;
+                            width: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

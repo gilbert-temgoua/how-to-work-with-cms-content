@@ -1,0 +1,41 @@
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+-->
+<div
+    attr="data.main.attributes"
+    css="data.main.css"
+    ko-style="data.main.style"
+>
+  <div
+    class="scandiweb-accordion-title"
+    attr="data.title.attributes"
+    html="data.title.html"
+    data-role="collapsible"
+  ></div>
+  <div
+    class="scandiweb-accordion-content bypass-html-filter"
+    attr="data.content.attributes"
+    html="data.content.html"
+    data-role="content"
+  ></div>
+  <div>
+    <a
+      if="data.main.attributes()['data-show-button'] !== 'never'"
+      type="button"
+      attr="data.link.attributes"
+      data-bind="href: data.link.attributes().value"
+      ko-style="data.link.style"
+      css="data.link.css"
+    >
+      <span
+        attr="data.accordion_button_text.attributes"
+        html="data.accordion_button_text.html"
+      ></span>
+    </a>
+  </div>
+</div>

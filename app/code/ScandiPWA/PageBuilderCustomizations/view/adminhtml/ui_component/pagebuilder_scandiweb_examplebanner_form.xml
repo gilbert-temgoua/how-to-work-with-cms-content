@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * ScandiPWA_PageBuilderCustomizations
+ *
+ * @category ScandiPWA
+ * @package  ScandiPWA_PageBuilderCustomizations
+ * @author   Scandiweb <info@scandiweb.com>
+ */
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd" extends="pagebuilder_base_form">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Custom Banner</item>
+    </argument>
+
+    <settings>
+        <deps>
+            <dep>pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form_data_source</dep>
+        </deps>
+        <namespace>pagebuilder_scandiweb_examplebanner_form</namespace>
+    </settings>
+
+    <dataSource name="pagebuilder_scandiweb_examplebanner_form_data_source"
+                component="Magento_PageBuilder/js/form/provider">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_PageBuilder/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider name="pagebuilder_scandiweb_examplebanner_form_data_source"
+                      class="Magento\PageBuilder\Model\ContentType\DataProvider">
+            <settings>
+                <!-- Field that will have data. DataProvider class
+                     or PHP modifiers should populate this field in their responses
+                -->
+                <requestFieldName>stores</requestFieldName>
+                <primaryFieldName>stores</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="appearance_fieldset" sortOrder="10" component="Magento_PageBuilder/js/form/element/dependent-fieldset">
+        <settings>
+            <label translate="true">Appearance</label>
+            <additionalClasses>
+                <class name="admin__fieldset-visual-select-large">true</class>
+            </additionalClasses>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <imports>
+                <link name="hideFieldset">${$.name}.appearance:options</link>
+                <link name="hideLabel">${$.name}.appearance:options</link>
+            </imports>
+        </settings>
+        <field name="appearance" formElement="select" sortOrder="10" component="Magento_PageBuilder/js/form/element/dependent-visual-select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">default</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="admin__field-visual-select-container">true</class>
+                </additionalClasses>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <elementTmpl>Magento_PageBuilder/form/element/visual-select</elementTmpl>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="AppearanceSourceExampleBanner" />
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+
+    <fieldset name="general" sortOrder="20">
+        <settings>
+            <label translate="true">Banner Title</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <dynamicRows name="banner_title" sortOrder="20"
+                     component="ScandiPWA_PageBuilderCustomizations/js/form/components/variable-input"
+                     template="ScandiPWA_PageBuilderCustomizations/form/components/dynamic-rows/grid">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!-- A list of value codes and labels to show in the admin
+                         It can be used to specify input variations for store codes or languages
+                         Use the base variation as label for admin and the original string for translations -->
+                    <item name="inputVariations" xsi:type="array">
+                        <item name="base" xsi:type="string">Default label</item>
+                        <item name="store1" xsi:type="string">es</item>
+                        <item name="store2" xsi:type="string">de</item>
+                        <item name="store3" xsi:type="string">lv</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Title translation</label>
+                <identificationProperty>record_id</identificationProperty>
+                <visible>true</visible>
+                <componentType>dynamicRows</componentType>
+                <defaultRecord>true</defaultRecord>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="label" component="Magento_Ui/js/form/element/text" template="Magento_PageBuilder/dynamic-rows/element/text" formElement="input">
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Value for</label>
+                        <visible>true</visible>
+                        <dataScope>label</dataScope>
+                        <elementTmpl>ui/dynamic-rows/cells/text</elementTmpl>
+                    </settings>
+                </field>
+                <field name="value" formElement="input">
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Value</label>
+                        <visible>true</visible>
+                        <dataScope>value</dataScope>
+                    </settings>
+                </field>
+            </container>
+        </dynamicRows>
+    </fieldset>
+
+    <fieldset name="banner_data" sortOrder="30">
+        <settings>
+            <label translate="true">Main</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_image_src" sortOrder="20" formElement="imageUploader">
+            <settings>
+                <label translate="true">Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="banner_image_alt" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Image ALT</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_image_title" sortOrder="40" formElement="input">
+            <settings>
+                <label translate="true">Image Title</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="banner_button_data" sortOrder="40">
+        <settings>
+            <label translate="true">Banner Button</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_button_text" sortOrder="10" formElement="input">
+            <settings>
+                <label translate="true">Text</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_button_href" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Link URL</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="show_second_button" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice"
+               formElement="checkbox" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="notices" xsi:type="array">
+                        <item name="0" xsi:type="string" translate="true">No second button</item>
+                        <item name="1" xsi:type="string" translate="true">Yes to second button</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Show second button</label>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form.banner_button_data.banner_second_button_text</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form.banner_button_data.banner_second_button_href</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form.banner_button_data.banner_second_button_text</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>pagebuilder_scandiweb_examplebanner_form.pagebuilder_scandiweb_examplebanner_form.banner_button_data.banner_second_button_href</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="banner_second_button_text" sortOrder="40" formElement="input">
+            <settings>
+                <label translate="true">Text</label>
+                <visible>false</visible>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_second_button_href" sortOrder="50" formElement="input">
+            <settings>
+                <label translate="true">Link URL</label>
+                <visible>false</visible>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="banner_stepone" sortOrder="50">
+        <settings>
+            <label translate="true">Step 1</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_stepone_icon_src" sortOrder="10" formElement="imageUploader">
+            <settings>
+                <label translate="true">Icon</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="banner_stepone_icon_alt" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Icon ALT</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepone_icon_title" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Icon Title</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepone_text" sortOrder="40" formElement="textarea">
+            <settings>
+                <label translate="true">Text</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="banner_steptwo" sortOrder="60">
+        <settings>
+            <label translate="true">Step 2</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_steptwo_icon_src" sortOrder="10" formElement="imageUploader">
+            <settings>
+                <label translate="true">Icon</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="banner_steptwo_icon_alt" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Icon ALT</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_steptwo_icon_title" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Icon Title</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_steptwo_text" sortOrder="40" formElement="textarea">
+            <settings>
+                <label translate="true">Text</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="banner_stepthree" sortOrder="70">
+        <settings>
+            <label translate="true">Step 3</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_stepthree_icon_src" sortOrder="10" formElement="imageUploader">
+            <settings>
+                <label translate="true">Icon</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="banner_stepthree_icon_alt" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Icon ALT</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepthree_icon_title" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Icon Title</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepthree_text" sortOrder="40" formElement="textarea">
+            <settings>
+                <label translate="true">Text</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="banner_stepfour" sortOrder="80">
+        <settings>
+            <label translate="true">Step 4</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="banner_stepfour_icon_src" sortOrder="10" formElement="imageUploader">
+            <settings>
+                <label translate="true">Icon</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="banner_stepfour_icon_alt" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Icon ALT</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepfour_icon_title" sortOrder="30" formElement="input">
+            <settings>
+                <label translate="true">Icon Title</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="banner_stepfour_text" sortOrder="40" formElement="textarea">
+            <settings>
+                <label translate="true">Text</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

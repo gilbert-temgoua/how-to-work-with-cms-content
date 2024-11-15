@@ -1,0 +1,68 @@
+<!--
+/**
+ * ScandiPWA_PageBuilderCustomizations
+ *
+ * @category Scandiweb
+ * @package  ScandiPWA_PageBuilderCustomizations
+ * @author   Scandiweb <info@scandiweb.com>
+ */
+-->
+
+<div attr="data.main.attributes"
+     ko-style="data.main.style"
+     class="pagebuilder-content-type"
+     css="data.main.css"
+     event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false"
+>
+    <div translate="'Banner Block'"></div>
+    <div class="BannerBlock">
+        <div class="BannerBlock-BannerImage">
+            <img
+                class="DesktopImage"
+                attr="data.banner_desktop_image.attributes"
+            />
+            <img
+                class="MobileImage"
+                attr="data.banner_mobile_image.attributes"
+            />
+        </div>
+        <div class="BannerBlock-Description">
+            <div class="BannerBlock-DescriptionContent">
+                <span
+                    attr="data.banner_subtitle.attributes"
+                    data-bind="liveEdit: { field: 'banner_subtitle', placeholder: $t('Enter Banner Subtitle') }"
+                    class="Subtitle"
+                ></span>
+                <span
+                    attr="data.banner_title.attributes"
+                    data-bind="liveEdit: { field: 'banner_title', placeholder: $t('Enter Banner Title') }"
+                    class="Title"
+                ></span>
+                <span
+                    attr="data.banner_text.attributes"
+                    data-bind="liveEdit: { field: 'banner_text', placeholder: $t('Enter Banner Text') }"
+                    class="Text"
+                ></span>
+            </div>
+            <div class="BannerBlock-DescriptionActions">
+                <a if="data.main.attributes()['data-banner-button-visibility'] === '1'"
+                   class="Button"
+                   attr="data.banner_button_href.attributes"
+                   data-bind="href: data.banner_button_href.attributes().value"
+                   ko-style="Object.assign(
+                    {},
+                    {
+                        backgroundColor: data.main.attributes()['banner_button_color'] ? data.main.attributes()['banner_button_color'] : undefined
+                    }
+                 )"
+                >
+                    <span
+                        attr="data.banner_button_text.attributes"
+                        data-bind="liveEdit: { field: 'banner_button_text', placeholder: $t('Enter Button Text') }"
+                    ></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <render args="getOptions().template"/>
+</div>

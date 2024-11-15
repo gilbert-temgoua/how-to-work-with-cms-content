@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type
+        name="products"
+        label="Products"
+        component="Magento_PageBuilder/js/content-type"
+        preview_component="Magento_PageBuilder/js/content-type/products/preview"
+        form="pagebuilder_products_form"
+        menu_section="add_content"
+        icon="icon-pagebuilder-products"
+        sortOrder="20"
+        translate="label">
+        <appearances>
+            <appearance
+                default="true"
+                name="grid"
+                preview_template="Scandiweb_ProductsSlider/content-type/products/grid/preview"
+                master_template="Scandiweb_ProductsSlider/content-type/products/grid/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="title_products">
+                        <html name="title_products"
+                            converter="Magento_PageBuilder/js/converter/html/tag-escaper" />
+                    </element>
+                    <element name="button">
+                        <html name="button_title" />
+                        <attribute name="link" source="href" />
+                    </element>
+                    <element name="wrapper">
+                        <attribute name="background_color" source="data-background" />
+                    </element>
+                </elements>
+                <converters>
+                    <converter component="Scandiweb_ProductsSlider/js/content-type/products/mass-converter/widget-directive" name="widget_directive">
+                        <config>
+                            <item name="html_variable" value="html"/>
+                        </config>
+                    </converter>
+                </converters>
+            </appearance>
+            <appearance name="carousel"
+                preview_template="Scandiweb_ProductsSlider/content-type/products/grid/preview"
+                master_template="Scandiweb_ProductsSlider/content-type/products/grid/master"
+                reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="title_products">
+                        <html name="title_products"
+                            converter="Magento_PageBuilder/js/converter/html/tag-escaper" />
+                    </element>
+                    <element name="button">
+                        <html name="button_title" />
+                        <attribute name="link" source="href" />
+                    </element>
+                    <element name="wrapper">
+                        <attribute name="background_color" source="data-background" />
+                    </element>
+                </elements>
+                <converters>
+                    <converter component="Scandiweb_ProductsSlider/js/content-type/products/mass-converter/carousel-widget-directive" name="widget_directive">
+                        <config>
+                            <item name="html_variable" value="html"/>
+                        </config>
+                    </converter>
+                </converters>
+            </appearance>
+        </appearances>
+    </type>
+</config>

@@ -1,0 +1,47 @@
+[data-content-type='scandiweb_accordion'] {
+  border-bottom: 1px solid @color-black;
+  font-weight: normal;
+
+  .scandiweb {
+    &-accordion {
+      &-content {
+        line-height: 1.6;
+        padding: 0 15px 19px 40px;
+      }
+
+      &-title {
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1.2;
+        opacity: 0.8;
+        padding: 21px 30px 19px 40px;
+        position: relative;
+
+        &::before {
+          border-top: 3px solid transparent;
+          border-bottom: 3px solid transparent;
+          border-left: 3px solid @color-black;
+          content: '';
+          height: 0;
+          left: 24px;
+          position: absolute;
+          top: 27px;
+          width: 0;
+        }
+
+        &[aria-expanded='true'] {
+          opacity: 1;
+
+          &::before {
+            border-bottom: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 3px solid @color-black;
+            left: 22px;
+            top: 29px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+:root {
+    --max-example-banner-width: 1380px;
+}
+
+a {
+    &:active, &:focus, &:visited {
+        color: inherit;
+    }
+}
+
+.ExampleBanner {
+    display: flex;
+    background-color: initial;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    max-width: var(--max-example-banner-width);
+    position: relative;
+    overflow: hidden;
+    margin: 40px auto;
+    width: 100%;
+
+    &-Description {
+        background-color: #f9f9f9;
+        padding: 45px 20px;
+        width: 100%;
+
+        &Title {
+            font-weight: 700;
+            padding-block-end: 10px;
+            max-width: 38%;
+            font-size: 32px;
+            position: absolute;
+            left: 20px;
+        }
+
+        &Steps {
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+
+        &StepWrapper {
+            margin: 0 5px;
+            text-align: center;
+            z-index: 0;
+
+            &:first-child {
+                margin-inline-start: 0;
+            }
+
+            span {
+                display: block;
+            }
+        }
+
+        &StepContent {
+            display: flex;
+            width: 190px;
+            height: 190px;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            padding: 15px 0 25px;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            background: #f9f9f9;
+            box-shadow: 0 12px 24px -8px rgba(10, 9, 3, 0.12);
+            box-sizing: border-box;
+        }
+
+        &StepText {
+            font-weight: 700;
+            margin: 0;
+            padding: 0 15px;
+            font-size: 18px;
+
+            &_number {
+                margin: 0 0 7px;
+            }
+        }
+
+        &Actions {
+            padding-block-start: 20px;
+
+            .Button {
+                width: auto;
+                padding: 12px 20px;
+                border: 1px solid #f26323;
+                border-radius: 2px;
+                text-decoration: none;
+                display: inline-block;
+                font-weight: 700;
+                text-align: center;
+                text-transform: uppercase;
+                color: black;
+                transition-property: background-color, color, border;
+                will-change: background-color, color, border;
+                transition-timing-function: ease-out;
+                transition-duration: .25s;
+                cursor: pointer;
+                background: #f26323;
+                font-size: 16px;
+
+                &:hover {
+                    padding: 12px 36px;
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #bd420b;
+                }
+            }
+
+            [data-element='banner_second_button_href'] {
+                color: black;
+                background-color: transparent;
+                border: 2px solid black;
+                border-radius: 2px;
+                margin: 14px 0 0 10px;
+
+                &:hover {
+                    color: var(--primary-dark-color);
+                    background-color: transparent;
+                    border: 2px solid var(--primary-dark-color);
+                }
+            }
+        }
+    }
+
+    &-Icon {
+        padding: 15px;
+
+        img {
+            width: 100%;
+            height: 80px;
+        }
+    }
+
+    &-BannerImage {
+        margin: 0 15px;
+        position: absolute;
+        max-height: none;
+        width: 60%;
+        height: 388px;
+        padding: 0;
+        background-color: initial;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

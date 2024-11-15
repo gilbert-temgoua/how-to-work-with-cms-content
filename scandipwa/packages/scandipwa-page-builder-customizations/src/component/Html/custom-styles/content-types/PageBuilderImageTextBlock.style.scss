@@ -1,0 +1,296 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+*/
+
+$middle-line-background-color: #ffff;
+
+[data-content-type='image_with_text_line'] {
+    @include mobile {
+        margin-bottom: 24px;
+    }
+
+    .image-with-text-customize {
+        display: flex;
+        flex-direction: column;
+
+        @include desktop {
+            flex-direction: row;
+            width: 100%;
+            margin: 0 auto;
+            height: 400px;
+            justify-content: space-between;
+        }
+
+        .image-with-text-mobile {
+            height: fit-content;
+
+            @include desktop {
+                height: 100%;
+                width: calc(100% - 20px);
+            }
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 182px;
+            }
+        }
+
+        .image-with-text-mobile,
+        .image-with-text-middle-no-image {
+            display: block;
+
+            @include desktop {
+                display: none;
+            }
+        }
+
+        .image-with-text-desktop,
+        .image-with-text-wrapper,
+        .pagebuilder-video-container {
+            display: flex;
+            align-content: center;
+            padding: 0;
+            width: 100%;
+
+            @include desktop {
+                padding: 45px 0;
+                width: calc(45% - 16px);
+            }
+        }
+
+        .image-with-text-desktop {
+            display: none;
+
+            @include desktop {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover;
+            }
+        }
+
+        .pagebuilder-video-container {
+            order: 1;
+
+            @include desktop {
+                order: unset;
+            }
+
+            iframe {
+                width: 100%;
+                height: 182px;
+
+                @include desktop {
+                    height: 100%;
+                }
+            }
+        }
+
+        .image-with-text-wrapper {
+            order: 2;
+            flex-direction: column;
+            margin-top: 15px;
+
+            @include desktop {
+                margin: 0;
+                order: unset;
+                flex-direction: row;
+            }
+
+            .mobile {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                height: 26px;
+                margin-bottom: 10px;
+
+                @include desktop {
+                    display: none;
+                }
+            }
+        }
+
+        .image-with-text-text-wrapper {
+            @include desktop {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: justify;
+                font-size: 18px;
+            }
+        }
+
+        .image-with-text-text-middle {
+            display: none;
+
+            @include desktop {
+                position: relative;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cms-year {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 32px;
+                margin-bottom: unset;
+            }
+        }
+
+        .header-link-title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            margin: 5px 0 16px;
+
+            @include desktop {
+                margin-bottom: 16px;
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+
+        .content,
+        .content > * {
+            text-align: start;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px !important;
+            line-height: 24px;
+        }
+
+        .mobile-middle-text {
+            // 'middle-line' elements for mobile designs go here.
+            // can be changed to different styles if needed
+            display: flex;
+            flex-direction: column;
+
+            @include desktop {
+                display: none;
+            }
+
+            .middle-line {
+                display: block;
+                top: 20px;
+                height: 28px;
+                width: 2px;
+                background: var(--primary-base-color);
+                position: relative;
+                left: 50%;
+                margin-bottom: 30px;
+
+                &::before {
+                    background-color: $middle-line-background-color;
+                    content: "";
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid var(--primary-base-color);
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                    -webkit-transform-origin: bottom left;
+                    transform-origin: bottom left;
+                    top: -15px;
+                    left: 1px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: -3px;
+                    width: 8px;
+                    height: 8px;
+                    background: var(--primary-base-color);
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                }
+            }
+
+            .cms-year-mobile {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 32px;
+                width: 100%;
+                margin: 8px 0;
+                text-align: center;
+            }
+        }
+
+        .middle-line {
+            // vvv 'middle line' elements for desktop
+            display: none;
+
+            @include desktop {
+                display: block;
+                top: 20px;
+                height: calc(35.5% + 5px);
+                width: 2px;
+                background: var(--primary-base-color);
+                position: absolute;
+                left: 50%;
+
+                &::before {
+                    background-color: $middle-line-background-color;
+                    content: "";
+                    position: absolute;
+                    width: 28px;
+                    height: 28px;
+                    border: 2.5px solid var(--primary-base-color);
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                    -webkit-transform-origin: bottom left;
+                    transform-origin: bottom left;
+                    top: -25px;
+                    left: 1px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: -3px;
+                    width: 8px;
+                    height: 8px;
+                    background: var(--primary-base-color);
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                }
+
+                &.last {
+                    bottom: 9px;
+                    height: 41.5%;
+                    width: 2px;
+                    background: var(--primary-base-color);
+                    opacity: 1;
+                    top: inherit;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

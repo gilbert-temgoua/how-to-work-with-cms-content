@@ -1,0 +1,192 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+:root {
+    --testimonials-nav-btns-distance: 5px;
+    --testimonials-slider-padding: 16px;
+    --testimonials-slide-padding: 15px;
+
+    @include desktop {
+        --testimonials-slider-padding: 40px;
+        --testimonials-nav-btns-distance: -20px;
+    }
+}
+
+.TestimonialsSlider {
+    max-width: 1440px;
+    margin: 40px auto;
+
+    &-NavigationNext,
+    &-NavigationPrev {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        inset-block-start: 150px;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 12px 24px -8px rgba(10, 9, 3, 0.12);
+        background: #FFFFFF;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: 55% center;
+        background-size: cover;
+        z-index: 10;
+        cursor: pointer;
+
+        &.swiper {
+            &-button {
+                &-disabled,
+                &-hidden {
+                    opacity: 0;
+                    cursor: auto;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        img {
+            height: 17px;
+            width: 10px !important;
+        }
+    }
+
+    &-NavigationNext {
+        inset-inline-end: var(--testimonials-nav-btns-distance);
+    }
+
+    &-NavigationPrev {
+        inset-inline-start: var(--testimonials-nav-btns-distance);
+
+        img {
+            transform: rotate(180deg);
+        }
+    }
+
+    .swiper {
+        &-slide {
+            height: unset;
+            background-color: #EEEEEE;
+            padding: 56px var(--testimonials-slide-padding) 84px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: flex-start;
+            width: 75%;
+
+            @include desktop {
+                min-height: 350px;
+                width: 300px;
+            }
+
+            .Star-Rating {
+                position: absolute;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                width: calc(100% - var(--testimonials-slide-padding));
+                top: 25px;
+
+                img,
+                svg {
+                    width: 19px;
+                    height: 19px;
+                    margin-right: 7px;
+                }
+            }
+
+            p {
+                margin-bottom: 12px;
+                padding-inline: 0;
+                width: 100%;
+
+                @include mobile {
+                    span {
+                        // forcing the text to shrink to fit designs only for mobile,
+                        // as the rest is controlled from admin Page Builder
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px !important;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            [data-content-type="text"] {
+                min-height: 20px;
+
+                &:nth-last-child(3) {
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+
+                &:last-child {
+                    // vvv Assuming the last content's elements are: author's image and name
+                    position: absolute;
+                    bottom: 24px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    left: 75px;
+                    align-self: flex-end;
+                    height: 48px;
+
+                    p {
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 24px;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            [data-content-type="image"] {
+                position: absolute;
+                bottom: 24px;
+                border-radius: 50%;
+
+                img {
+                    border-radius: 50%;
+                    object-fit: cover;
+                    // blocking any PBuilder's unwanted image styles for author's image
+                    width: 48px !important;
+                    height: 48px !important;
+                }
+            }
+        }
+    }
+}
+
+.CmsPage {
+    .TestimonialsSlider {
+        padding-inline: var(--testimonials-slider-padding);
+
+        @include desktop {
+            padding-inline: var(--testimonials-slider-padding);
+        }
+
+        &-NavigationNext {
+            @include desktop {
+                inset-inline-end: calc(var(--testimonials-nav-btns-distance) + var(--testimonials-slider-padding));
+            }
+        }
+
+        &-NavigationPrev {
+            @include desktop {
+                inset-inline-start: calc(var(--testimonials-nav-btns-distance) + var(--testimonials-slider-padding));
+            }
+
+            &::after {
+                @include desktop {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}

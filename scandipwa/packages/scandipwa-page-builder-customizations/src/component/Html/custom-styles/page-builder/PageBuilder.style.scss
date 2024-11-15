@@ -1,0 +1,146 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    // 'fade out bottom'
+    --fade-out-bottom-gradient-start: 50%;
+    --fade-out-bottom-gradient-end: 100%;
+
+    // 'watermark'
+    --watermark-icon-path: url('../icons/scandipwa-logo.png');
+    --watermark-icon-width: 15%;
+}
+
+// Removing PB admin's info-note from the front-end
+.info-note {
+    display: none;
+}
+
+.HideWhenDesktop,
+.pagebuilder-mobile-only {
+    display: block;
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.HideWhenMobile,
+.pagebuilder-mobile-hidden {
+    display: none;
+
+    @include desktop {
+        display: block;
+    }
+}
+
+.HideRowWhenDesktop {
+    display: flex !important;
+    flex-wrap: wrap;
+
+    @include desktop {
+        display: none !important;
+    }
+}
+
+.HideRowWhenMobile {
+    display: none !important;
+
+    @include desktop {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+}
+
+.CircleIcon {
+    width: 56px;
+    height: 56px;
+
+    p {
+        margin-top: -11px;
+        margin-left: -7px;
+    }
+}
+
+.FadeOutBottom {
+    -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) var(--fade-out-bottom-gradient-start),
+            rgba(0, 0, 0, 0) var(--fade-out-bottom-gradient-end)
+    );
+    mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) var(--fade-out-bottom-gradient-start),
+            rgba(0, 0, 0, 0) var(--fade-out-bottom-gradient-end)
+    );
+}
+
+.Watermark {
+    &::after {
+        background-image: var(--watermark-icon-path);
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 50px;
+        top: 15px;
+        right: 25px;
+        min-width: var(--watermark-icon-width);
+        content: '';
+        position: absolute;
+        z-index: 1;
+
+        @include desktop {
+            top: 30px;
+            right: 35px;
+        }
+    }
+}
+
+.CmsPage-Content {
+    [data-content-type='row'] {
+        .AlignItemsCenter {
+            align-items: center;
+        }
+
+        .WidthFitContent {
+            width: fit-content;
+        }
+
+        .Width50Percent {
+            width: 50%;
+        }
+
+        .Height40px {
+            height: 40px;
+        }
+
+        .BackgroundOrange {
+            background-color: #ff6200;
+        }
+
+        .Order1 {
+            @include mobile {
+                order: 1;
+            }
+        }
+
+        .Order2 {
+            @include mobile {
+                order: 2;
+            }
+        }
+
+        .Order3 {
+            @include mobile {
+                order: 3;
+            }
+        }
+    }
+}

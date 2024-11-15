@@ -1,0 +1,37 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+.ShowAsPopUp {
+    .ImageLightboxPopup {
+        button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .ImageBlock {
+            &-isDesktopHidden {
+                display: block;
+
+                @include desktop {
+                    display: none;
+                }
+            }
+
+            &-isMobileHidden {
+                display: none;
+
+                @include desktop {
+                    display: block;
+                }
+            }
+        }
+
+        .lb-canvas img {
+            width: unset;
+        }
+    }
+}

@@ -30,7 +30,9 @@
         "./node_modules/@scandipwa/scandipwa/src/**/*",
         "./src/**/*",
         "src/**/*",
-        "node_modules/@scandipwa/scandipwa/src/**/*"
+        "node_modules/@scandipwa/scandipwa/src/**/*",
+        "packages/scandipwa-page-builder-customizations/src/**/*",
+        "packages/adobe-page-builder/src/**/*"
     ],
     "exclude": []
 }

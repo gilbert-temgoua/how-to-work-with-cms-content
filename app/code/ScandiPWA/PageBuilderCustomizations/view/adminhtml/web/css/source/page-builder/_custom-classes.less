@@ -1,0 +1,98 @@
+:root {
+    // 'fade out bottom'
+    --fade-out-bottom-gradient-start: 60%;
+    --fade-out-bottom-gradient-end: 100%;
+
+    // watermark
+    --watermark-icon-path: url('@{baseDir}ScandiPWA_PageBuilderCustomizations/images/icons/scandipwa-logo.png');
+    --watermark-icon-width: 15%;
+}
+
+.pagebuilder-root-container {
+
+    .CircleIcon {
+        width: 56px;
+        height: 56px;
+
+        p {
+            margin-top: -11px;
+            margin-left: -7px;
+        }
+    }
+
+    .AlignItemsCenter {
+        align-items: center;
+    }
+
+    .WidthFitContent {
+        width: fit-content;
+    }
+
+    .Height40px {
+        height: 40px;
+    }
+
+    .Width50Percent {
+        width: 50%;
+    }
+
+    .BackgroundOrange {
+        background-color: #ff6200;
+    }
+
+    .FadeOutBottom {
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) var(--fade-out-bottom-gradient-start), rgba(0, 0, 0, 0) var(--fade-out-bottom-gradient-end));
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) var(--fade-out-bottom-gradient-start), rgba(0, 0, 0, 0) var(--fade-out-bottom-gradient-end));
+    }
+
+    .Watermark {
+        position: relative;
+
+        &::after {
+            background-image: var(--watermark-icon-path);
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 50px;
+            top: 15px;
+            right: 25px;
+            min-width: var(--watermark-icon-width);
+            content: '';
+            position: absolute;
+            z-index: 1;
+        }
+    }
+}
+
+// Desktop preview
+.desktop-viewport {
+    .HideWhenDesktop {
+        display: none !important;
+    }
+
+    .HideRowWhenDesktop {
+        display: none !important;
+    }
+}
+
+// Mobile preview
+.mobile-viewport {
+    .Order1 {
+        order: 1 !important;
+    }
+
+    .Order2 {
+        order: 2 !important;
+    }
+
+    .Order3 {
+        order: 3 !important;
+    }
+
+    .HideWhenMobile {
+        display: none !important;
+    }
+
+    .HideRowWhenMobile {
+        display: none !important;
+    }
+}

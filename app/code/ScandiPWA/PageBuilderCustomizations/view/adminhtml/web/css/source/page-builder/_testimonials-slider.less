@@ -1,0 +1,113 @@
+.pagebuilder-root-container {
+    .TestimonialsSlider {
+        // tabs
+
+        .pagebuilder-tab-item {
+            padding-top: 40px;
+
+            &:after {
+                display: block;
+                font-size: 16px;
+                height: 30px;
+                left: 0;
+                top: 10px;
+                position: absolute;
+                width: 300px;
+                font-weight: bold;
+            }
+
+            &.FiveStars {
+                &:after {
+                    content: 'Rating: \2B50\2B50\2B50\2B50\2B50';
+                }
+            }
+
+            &.FourStars {
+                &:after {
+                    content: 'Rating: \2B50\2B50\2B50\2B50';
+                }
+            }
+
+            &.ThreeStars {
+                &:after {
+                    content: 'Rating: \2B50\2B50\2B50';
+                }
+            }
+
+            &.TwoStars {
+                &:after {
+                    content: 'Rating: \2B50\2B50';
+                }
+            }
+
+            &.OneStar {
+                &:after {
+                    content: 'Rating: \2B50';
+                }
+            }
+
+            .preview-image {
+                border-radius: 50%;
+                object-fit: cover;
+                width: 100px !important;
+                height: 100px !important;
+            }
+        }
+
+        // columns
+
+        .pagebuilder-column-group {
+            .pagebuilder-column {
+                padding-top: 40px;
+
+                &:after {
+                    display: block;
+                    font-size: 14px;
+                    height: 30px;
+                    left: 0;
+                    top: 10px;
+                    position: absolute;
+                    width: 100%;
+                    font-weight: bold;
+                }
+
+                &.FiveStars {
+                    &:after {
+                        content: 'Rating: \2B50\2B50\2B50\2B50\2B50';
+                    }
+                }
+
+                &.FourStars {
+                    &:after {
+                        content: 'Rating: \2B50\2B50\2B50\2B50';
+                    }
+                }
+
+                &.ThreeStars {
+                    &:after {
+                        content: 'Rating: \2B50\2B50\2B50';
+                    }
+                }
+
+                &.TwoStars {
+                    &:after {
+                        content: 'Rating: \2B50\2B50';
+                    }
+                }
+
+                &.OneStar {
+                    &:after {
+                        content: 'Rating: \2B50';
+                    }
+                }
+
+                .preview-image {
+                    border-radius: 50%;
+                    object-fit: cover;
+                    width: 60px !important;
+                    height: 60px !important;
+                }
+            }
+        }
+    }
+}

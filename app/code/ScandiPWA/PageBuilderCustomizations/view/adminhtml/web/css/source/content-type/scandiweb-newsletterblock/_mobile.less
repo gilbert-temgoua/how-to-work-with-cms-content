@@ -1,0 +1,68 @@
+.mobile-viewport {
+    .Newsletter {
+        height: 350px;
+
+        &-Wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 'A' 'B' 'C';
+            padding: 0 40px;
+        }
+
+        &-Title {
+            &Wrapper {
+                padding-block-start: 20px;
+            }
+        }
+
+        &-Subtitle {
+            &Wrapper {
+                padding-block-start: 10px;
+            }
+        }
+
+        &-Line {
+            top: 50px;
+            left: 58px;
+        }
+
+        &-Actions {
+            width: 100%;
+
+            &Wrapper {
+                padding-block-start: 15px;
+                padding-block-end: 20px;
+                justify-content: start;
+            }
+        }
+
+        &-Form {
+            &Icon {
+                top: 50px;
+                left: 58px;
+                height: 50px;
+                width: 50px;
+            }
+
+            &Field {
+                &Email {
+                    width: 85%;
+                    right: 0;
+                }
+                &Input{
+                    height: 50px;
+                }
+            }
+
+            &Submit {
+                height: 50px;
+            }
+
+            &-TAC {
+                &Wrapper {
+                    margin: 15px 0;
+                }
+            }
+        }
+    }
+}

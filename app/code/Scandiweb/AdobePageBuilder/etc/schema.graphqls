@@ -1,0 +1,13 @@
+# /**
+# * Adobe page builder compatibility ScandiPWA
+#  * @copyright Scandiweb, Inc. All rights reserved.
+#  */
+
+type Query {
+    pageBuilderConfig: PageBuilderConfigType @resolver(class:"\\Scandiweb\\AdobePageBuilder\\Model\\Resolver\\PageBuilderConfig")
+}
+
+type PageBuilderConfigType {
+    googleMapsApiKey: String
+    googleMapsStyle: String
+}

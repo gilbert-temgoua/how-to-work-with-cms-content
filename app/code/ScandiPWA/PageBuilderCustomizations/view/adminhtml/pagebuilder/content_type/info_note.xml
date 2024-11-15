@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="info_note"
+          label="Info Note"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="ScandiPWA_PageBuilderCustomizations/js/content-type/info-note/preview"
+          form="pagebuilder_info_note_form"
+          menu_section="scandipwa"
+          icon="icon-pagebuilder-text"
+          sortOrder="1"
+          translate="label">
+        <children default_policy="deny"/>
+        <appearances>
+            <appearance default="true"
+                        name="default"
+                        preview_template="ScandiPWA_PageBuilderCustomizations/content-type/info-note/default/preview"
+                        master_template="ScandiPWA_PageBuilderCustomizations/content-type/info-note/default/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <style name="text_align" source="text_align"/>
+                        <style name="border" source="border_style" converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width" converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius" converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <style name="display" source="display" converter="Magento_PageBuilder/js/converter/style/display" preview_converter="Magento_PageBuilder/js/converter/style/preview/display"/>
+                        <style name="margins" storage_key="margins_and_padding" reader="Magento_PageBuilder/js/property/margins" converter="Magento_PageBuilder/js/converter/style/margins"/>
+                        <style name="padding" storage_key="margins_and_padding" reader="Magento_PageBuilder/js/property/paddings" converter="Magento_PageBuilder/js/converter/style/paddings"/>
+                        <attribute name="name" source="data-content-type"/>
+                        <attribute name="appearance" source="data-appearance"/>
+                        <attribute name="info_note_position" source="data-info-note-position"/>
+                        <html name="content" preview_converter="Magento_PageBuilder/js/converter/html/directive"/>
+                        <css name="css_classes"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+        <additional_data>
+            <item name="wysiwygConfig" xsi:type="array">
+                <item name="wysiwygConfigData"
+                      xsi:type="object">Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config
+                </item>
+            </item>
+        </additional_data>
+    </type>
+</config>

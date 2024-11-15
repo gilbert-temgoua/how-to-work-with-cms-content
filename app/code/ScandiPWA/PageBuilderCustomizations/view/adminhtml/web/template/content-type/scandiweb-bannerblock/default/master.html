@@ -1,0 +1,42 @@
+<!--
+/**
+ * ScandiPWA_PageBuilderCustomizations
+ *
+ * @category Scandiweb
+ * @package  ScandiPWA_PageBuilderCustomizations
+ * @author   Scandiweb <info@scandiweb.com>
+ */
+-->
+
+<!-- ScandiPWA Rendering Example -->
+<widget type="BannerBlock"
+        data-bind="attr: {
+        'data-banner-title': data.banner_title.html,
+        'data-banner-subtitle': data.banner_subtitle.html,
+        'data-banner-text': data.banner_text.html,
+        'data-banner-desktop-image-src': data.banner_desktop_image.attributes().src,
+        'data-banner-desktop-image-alt': data.banner_desktop_image.attributes().alt,
+        'data-banner-desktop-image-title': data.banner_desktop_image.attributes().title,
+        'data-banner-mobile-image-src': data.banner_mobile_image.attributes().src,
+        'data-banner-mobile-image-alt': data.banner_mobile_image.attributes().alt,
+        'data-banner-mobile-image-title': data.banner_mobile_image.attributes().title,
+        'data-button-url': data.banner_button_href.attributes().value,
+        'data-button-text': data.banner_button_text.html,
+        'data-button-color': data.banner_button_color.attributes().value,
+        'data-banner-mobile-layout': data.banner_mobile_layout.attributes().value
+    }"
+>
+    <div attr="data.main.attributes">
+        <div attr="data.banner_mobile_layout.attributes"></div>
+        <div attr="data.banner_desktop_image.attributes"></div>
+        <div attr="data.banner_mobile_image.attributes"></div>
+        <div attr="data.banner_title.attributes" html="data.banner_title.html"></div>
+        <div attr="data.banner_subtitle.attributes" html="data.banner_subtitle.html"></div>
+        <div attr="data.banner_text.attributes" html="data.banner_text.html"></div>
+        <div if="data.main.attributes()['data-banner-button-visibility'] === '1'">
+            <div attr="data.banner_button_text.attributes" html="data.banner_button_text.html"></div>
+            <div attr="data.banner_button_href.attributes"></div>
+            <div attr="data.banner_button_color.attributes"></div>
+        </div>
+    </div>
+</widget>

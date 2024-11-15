@@ -1,0 +1,30 @@
+.mobile-viewport {
+    .pagebuilder-row {
+        [data-content-type="products"] {
+            .widget-product-grid > .product-item {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .column-container {
+        [data-content-type="products"] {
+            margin-bottom: 0;
+
+            .block-products-list.grid {
+                .block-content {
+                    .grid > .widget-product-grid {
+                        .product-item {
+                            width: 50%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

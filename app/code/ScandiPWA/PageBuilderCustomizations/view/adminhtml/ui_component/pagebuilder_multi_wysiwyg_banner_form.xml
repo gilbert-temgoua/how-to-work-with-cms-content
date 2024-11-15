@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd"
+      extends="pagebuilder_base_form">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                pagebuilder_multi_wysiwyg_banner_form.pagebuilder_multi_wysiwyg_banner_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">GameDescription Block</item>
+    </argument>
+
+    <settings>
+        <deps>
+            <dep>pagebuilder_multi_wysiwyg_banner_form.pagebuilder_multi_wysiwyg_banner_form_data_source</dep>
+        </deps>
+        <namespace>pagebuilder_multi_wysiwyg_banner_form</namespace>
+    </settings>
+
+    <dataSource name="pagebuilder_multi_wysiwyg_banner_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_PageBuilder/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider name="pagebuilder_multi_wysiwyg_banner_form_data_source"
+                      class="Magento\PageBuilder\Model\ContentType\DataProvider">
+            <settings>
+                <requestFieldName/>
+                <primaryFieldName/>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="appearance_fieldset" sortOrder="10"
+              component="Magento_PageBuilder/js/form/element/dependent-fieldset">
+        <settings>
+            <label translate="true">Appearance</label>
+            <additionalClasses>
+                <class name="admin__fieldset-visual-select-large">true</class>
+            </additionalClasses>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <imports>
+                <link name="hideFieldset">${$.name}.appearance:options</link>
+                <link name="hideLabel">${$.name}.appearance:options</link>
+            </imports>
+        </settings>
+        <field name="appearance" formElement="select" sortOrder="10"
+               component="Magento_PageBuilder/js/form/element/dependent-visual-select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">default</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="admin__field-visual-select-container">true</class>
+                </additionalClasses>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <elementTmpl>Magento_PageBuilder/form/element/visual-select</elementTmpl>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="AppearanceSourceMultiWysiwygBanner"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+
+    <fieldset name="left_side" sortOrder="20">
+        <settings>
+            <label translate="true">Left Side</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="left_side_type" sortOrder="10" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Left Side Background Type</label>
+                <dataScope>left_side_type</dataScope>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.left_side.background_color_left</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_background_image_desktop</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_background_image_mobile</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.left_side.background_color_left</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_background_image_desktop</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="2">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_background_image_mobile</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="label" xsi:type="string" translate="true">Background Color</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string" translate="true">Background Image</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="background_color_left" sortOrder="20" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">#eeeeee</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Left Side Background Color</label>
+                <componentType>colorPicker</componentType>
+                <placeholder translate="true">No Color</placeholder>
+                <validation>
+                    <rule name="validate-color" xsi:type="boolean">true</rule>
+                </validation>
+                <dataScope>background_color_left</dataScope>
+                <additionalClasses>
+                    <class name="admin__field-medium">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="left_background_image_mobile" sortOrder="30" formElement="imageUploader">
+            <settings>
+                <label translate="true">Left Mobile Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="left_background_image_desktop" sortOrder="40" formElement="imageUploader">
+            <settings>
+                <label translate="true">Left Desktop Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="left_side_visibility" sortOrder="50" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">none</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Display Left Side Content</label>
+                <dataScope>left_side_visibility</dataScope>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>none</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_content</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.left_side.content_color_left</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>flex</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.left_side.left_content</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.left_side.content_color_left</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">none</item>
+                                <item name="label" xsi:type="string" translate="true">No</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">flex</item>
+                                <item name="label" xsi:type="string" translate="true">Yes</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="left_content" sortOrder="60" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="pagebuilder_button" xsi:type="boolean">false</item>
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">false</item>
+                        <item name="height" xsi:type="string">200px</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Left Content</label>
+                <dataScope>left_content</dataScope>
+                <validation>
+                    <rule name="validate-no-url" xsi:type="boolean">true</rule>
+                    <rule name="validate-no-widget" xsi:type="boolean">true</rule>
+                </validation>
+                <imports>
+                    <link name="validation.validate-no-url">${$.parentName}.link_url:value</link>
+                    <link name="validation.validate-no-widget">${$.parentName}.link_url:value</link>
+                </imports>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="content_color_left" sortOrder="70" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">#ffffff</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Left Content Background Color</label>
+                <componentType>colorPicker</componentType>
+                <placeholder translate="true">No Color</placeholder>
+                <validation>
+                    <rule name="validate-color" xsi:type="boolean">true</rule>
+                </validation>
+                <dataScope>content_color_left</dataScope>
+                <additionalClasses>
+                    <class name="admin__field-medium">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="left_side_mobile_order" sortOrder="80" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Left Content Position On Mobile</label>
+                <notice>If changed, please also change the Right Side position to opposite value in order to prevent any display issues.</notice>
+                <dataScope>left_side_mobile_order</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string" translate="true">First</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">2</item>
+                                <item name="label" xsi:type="string" translate="true">Second</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+
+    <fieldset name="right_side" sortOrder="30">
+    <settings>
+        <label translate="true">Right Side</label>
+        <collapsible>true</collapsible>
+        <opened>true</opened>
+    </settings>
+        <field name="right_side_type" sortOrder="10" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Right Side Background Type</label>
+                <dataScope>right_side_type</dataScope>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.right_side.background_color_right</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_background_image_desktop</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_background_image_mobile</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.right_side.background_color_right</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_background_image_desktop</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="2">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_background_image_mobile</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="label" xsi:type="string" translate="true">Background Color</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string" translate="true">Background Image</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="background_color_right" sortOrder="20" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">#eeeeee</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Right Side Background Color</label>
+                <componentType>colorPicker</componentType>
+                <placeholder translate="true">No Color</placeholder>
+                <validation>
+                    <rule name="validate-color" xsi:type="boolean">true</rule>
+                </validation>
+                <dataScope>background_color_right</dataScope>
+                <additionalClasses>
+                    <class name="admin__field-medium">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="right_background_image_mobile" sortOrder="30" formElement="imageUploader">
+            <settings>
+                <label translate="true">Left Mobile Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="right_background_image_desktop" sortOrder="40" formElement="imageUploader">
+            <settings>
+                <label translate="true">Left Desktop Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">pagebuilder/contenttype/image_upload</param>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_PageBuilder/form/element/uploader/preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="right_side_visibility" sortOrder="50" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">flex</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Display Right Side Content</label>
+                <dataScope>right_side_visibility</dataScope>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>none</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_content</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.right_side.content_color_right</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>flex</value>
+                            <actions>
+                                <action name="0">
+                                    <target>${ $.ns }.${ $.ns }.right_side.right_content</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>${ $.ns }.${ $.ns }.right_side.content_color_right</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">none</item>
+                                <item name="label" xsi:type="string" translate="true">No</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">flex</item>
+                                <item name="label" xsi:type="string" translate="true">Yes</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="right_content" sortOrder="60" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="pagebuilder_button" xsi:type="boolean">false</item>
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">false</item>
+                        <item name="height" xsi:type="string">200px</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Right Content</label>
+                <dataScope>right_content</dataScope>
+                <validation>
+                    <rule name="validate-no-url" xsi:type="boolean">true</rule>
+                    <rule name="validate-no-widget" xsi:type="boolean">true</rule>
+                </validation>
+                <imports>
+                    <link name="validation.validate-no-url">${$.parentName}.link_url:value</link>
+                    <link name="validation.validate-no-widget">${$.parentName}.link_url:value</link>
+                </imports>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="content_color_right" sortOrder="70" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">#ffffff</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Right Content Background Color</label>
+                <componentType>colorPicker</componentType>
+                <placeholder translate="true">No Color</placeholder>
+                <validation>
+                    <rule name="validate-color" xsi:type="boolean">true</rule>
+                </validation>
+                <dataScope>content_color_right</dataScope>
+                <additionalClasses>
+                    <class name="admin__field-medium">true</class>
+                </additionalClasses>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="right_side_mobile_order" sortOrder="80" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">2</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Right Content Position On Mobile</label>
+                <notice>If changed, please also change the Left Side position to opposite value in order to prevent any display issues.</notice>
+                <dataScope>right_side_mobile_order</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string" translate="true">First</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">2</item>
+                                <item name="label" xsi:type="string" translate="true">Second</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+    </fieldset>
+</form>

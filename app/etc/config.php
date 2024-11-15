@@ -371,6 +371,7 @@ return [
         'ScandiPWA_DirectoryGraphQl' => 1,
         'ScandiPWA_Installer' => 1,
         'ScandiPWA_Locale' => 1,
+        'ScandiPWA_PageBuilderCustomizations' => 1,
         'ScandiPWA_Performance' => 1,
         'ScandiPWA_PersistedQuery' => 1,
         'ScandiPWA_ProductAlertsGraphQl' => 1,
@@ -383,7 +384,9 @@ return [
         'ScandiPWA_StoreGraphQL' => 1,
         'ScandiPWA_UrlrewriteGraphQl' => 1,
         'ScandiPWA_WishlistGraphQl' => 1,
+        'Scandiweb_AdobePageBuilder' => 1,
         'Scandiweb_Slider' => 1,
+        'Scandiweb_ProductsSlider' => 1,
         'ScandiPWA_SliderGraphQl' => 1
     ]
 ];

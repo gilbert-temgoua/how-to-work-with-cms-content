@@ -1,0 +1,330 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+.CategoryBlock {
+    max-width: 1440px;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    @include desktop {
+        padding: 0 16px;
+    }
+
+    @include wide-desktop {
+        padding: 0;
+    }
+
+    &-ColumnGroup {
+        display: flex;
+        flex-flow: wrap;
+        min-height: inherit;
+    }
+
+    &-Column {
+        box-sizing: border-box;
+        transition: width 1s ease;
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        background-position: left top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        border-style: none;
+        border-width: 1px;
+        border-radius: 0;
+
+        &FirstGrid,
+        &SecondGrid {
+            justify-content: space-between;
+            display: flex;
+            flex-direction: column;
+            background-position: left top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            flex-basis: 50%;
+            align-self: stretch;
+
+            @include desktop {
+                flex-basis: 25%;
+            }
+        }
+
+        &FirstGrid {
+            padding: 4px 6px 16px 16px;
+
+            @include desktop {
+                padding: 0 0 0 28px;
+            }
+        }
+
+        &SecondGrid {
+            padding: 4px 16px 16px 6px;
+
+            @include desktop {
+                padding: 0 0 0 28px;
+            }
+        }
+
+        &Hidden {
+            padding: 0 16px;
+            min-height: auto;
+            width: 100%;
+
+            @include desktop {
+                padding: 0 0 0 28px;
+                width: 50%
+            }
+        }
+
+        &Visible {
+            width: 100%;
+            padding: 0 16px;
+            align-self: flex-end;
+
+            @include desktop {
+                padding: 0;
+                flex-basis: 50%;
+            }
+        }
+
+        &Banner {
+            width: 100%;
+            margin: 0;
+            align-self: stretch;
+
+            @include desktop {
+                width: 50%;
+                min-height: auto;
+                padding-right: 0;
+            }
+        }
+    }
+
+    &-Title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+
+        @include desktop {
+            font-size: 40px;
+            line-height: 40px;
+        }
+
+        &P {
+            padding: 0;
+            margin-bottom: 32px;
+
+            @include desktop {
+                margin-bottom: 32px;
+            }
+        }
+    }
+
+    &-Subtitle {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+
+        &P {
+            margin-block-end: 1rem;
+            margin: 0 0 20px;
+        }
+    }
+
+    &-Description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+
+        &P {
+            margin-bottom: 24px;
+        }
+    }
+
+    &-Image {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+
+        &Placeholder {
+            padding: 0;
+            display: block;
+            height: 100%;
+
+            @include mobile {
+                height: auto;
+            }
+        }
+
+        img {
+            // vvv overwriting default images .CmsPage 'width: auto'
+            width: 100% !important;
+            object-fit: cover;
+        }
+    }
+
+    &-Button {
+        background-color: transparent;
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 2px solid var(--color-karaka);
+        border-radius: var(--button-border-radius);
+        padding: 14px 22px;
+        margin-top: 24px;
+        font-size: 14px;
+
+        &Holder {
+            margin: 20px 0 0 16px;
+            padding: 0;
+            position: absolute;
+            inset-block-start: 0;
+            display: flex;
+            flex-direction: column;
+
+            @include desktop {
+                margin: 42px 0 0 48px;
+            }
+
+            .CategoryBlock {
+                &-MainImageText {
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 20px;
+                    line-height: 24px;
+
+                    @include desktop {
+                        font-size: 32px;
+                        line-height: 40px;
+                    }
+                }
+            }
+        }
+
+        &Item {
+            margin-top: 24px;
+        }
+
+        &Text {
+            color: var(--color-karaka);
+        }
+    }
+
+    &-Category {
+        &Holder {
+            text-align: center;
+            padding-top: 12px;
+            border-style: none;
+            display: flex;
+
+            @include desktop {
+                padding-top: 0;
+                height: 50%;
+
+                &:last-child {
+                    margin-top: 28px;
+                }
+            }
+        }
+
+        &Holder:hover &Caption {
+            opacity: 0;
+            transition: .5s ease;
+        }
+
+        &Holder:hover &Image {
+            opacity: 1;
+            transition: .5s ease;
+        }
+
+        &Image {
+            background: var(--color-white);
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+
+            &Link {
+                height: 100%;
+                display: block;
+                width: 100%;
+            }
+
+            img {
+                // vvv overwriting default images .CmsPage 'width: auto'
+                width: 100% !important;
+                object-fit: cover;
+            }
+        }
+
+        &Caption {
+            position: absolute;
+            color: var(--color-karaka);
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            inset-block-start: 50%;
+            inset-inline-start: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+
+            @include desktop {
+                width: 100%;
+            }
+        }
+    }
+
+    &-ShopButton {
+        text-align: center;
+        background-color: var(--primary-base-color);
+        border-radius: var(--button-border-radius);
+        font-weight: 700;
+        font-family: inherit;
+        text-transform: uppercase;
+        padding: 14px 22px;
+        font-size: 14px;
+        line-height: 44px;
+        width: 100%;
+
+        &Holder {
+            padding: 0;
+
+            @include mobile {
+                margin: 20px 0 30px;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
+
+        &Item {
+            display: inline-block;
+
+            @include mobile {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        &Text {
+            color: var(--color-karaka);
+        }
+    }
+}

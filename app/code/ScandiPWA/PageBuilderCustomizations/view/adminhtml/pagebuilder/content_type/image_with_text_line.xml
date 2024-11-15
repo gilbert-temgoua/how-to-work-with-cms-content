@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="image_with_text_line"
+          label="Image+Text+Line"
+          menu_section="scandipwa"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="ScandiPWA_PageBuilderCustomizations/js/content-type/image-with-text-line/preview"
+          master_component="ScandiPWA_PageBuilderCustomizations/js/content-type/image-with-text-line/master"
+          form="pagebuilder_image_with_text_line_form"
+          icon="icon-pagebuilder-image"
+          sortOrder="21"
+          translate="label">
+        <children default_policy="deny"/>
+        <parents default_policy="deny">
+            <parent name="column" policy="allow"/>
+            <parent name="row" policy="allow"/>
+        </parents>
+        <appearances>
+            <appearance name="image-left"
+                        default="true"
+                        preview_template="ScandiPWA_PageBuilderCustomizations/content-type/image-with-text-line/image-left/preview"
+                        master_template="ScandiPWA_PageBuilderCustomizations/content-type/image-with-text-line/image-left/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <style name="margins" storage_key="margins_and_padding"
+                               reader="Magento_PageBuilder/js/property/margins"
+                               converter="Magento_PageBuilder/js/converter/style/margins"/>
+                        <style name="padding" storage_key="margins_and_padding"
+                               reader="Magento_PageBuilder/js/property/paddings"
+                               converter="Magento_PageBuilder/js/converter/style/paddings"/>
+                        <style name="display" source="display"
+                               converter="Magento_PageBuilder/js/converter/style/display"
+                               preview_converter="Magento_PageBuilder/js/converter/style/preview/display"/>
+                        <attribute name="name" source="data-content-type"/>
+                        <attribute name="appearance" source="data-appearance"/>
+                        <css name="css_classes"/>
+                    </element>
+                    <element name="image_with_text_image_mobile">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="image_with_text_image_mobile" source="src"
+                                   converter="Magento_PageBuilder/js/converter/attribute/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="image_with_text_image_desktop">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="image_with_text_image_desktop" source="src"
+                                   converter="Magento_PageBuilder/js/converter/attribute/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="video">
+                        <attribute name="video_source" source="src"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc"
+                                   preview_converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc"/>
+                        <attribute name="autoplay" storage_key="autoplay" source="autoplay"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                        <attribute name="muted_video" storage_key="autoplay" source="muted"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                    </element>
+                    <element name="text_block_title">
+                        <html name="text_block_title" converter="Magento_PageBuilder/js/converter/html/tag-escaper"/>
+                    </element>
+                    <element name="text_year">
+                        <html name="text_year" converter="Magento_PageBuilder/js/converter/html/tag-escaper"/>
+                    </element>
+                    <element name="content">
+                        <html name="content" preview_converter="Magento_PageBuilder/js/converter/html/directive"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="image-right"
+                        preview_template="ScandiPWA_PageBuilderCustomizations/content-type/image-with-text-line/image-right/preview"
+                        master_template="ScandiPWA_PageBuilderCustomizations/content-type/image-with-text-line/image-right/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <style name="margins" storage_key="margins_and_padding"
+                               reader="Magento_PageBuilder/js/property/margins"
+                               converter="Magento_PageBuilder/js/converter/style/margins"/>
+                        <style name="padding" storage_key="margins_and_padding"
+                               reader="Magento_PageBuilder/js/property/paddings"
+                               converter="Magento_PageBuilder/js/converter/style/paddings"/>
+                        <style name="display" source="display"
+                               converter="Magento_PageBuilder/js/converter/style/display"
+                               preview_converter="Magento_PageBuilder/js/converter/style/preview/display"/>
+                        <attribute name="name" source="data-content-type"/>
+                        <attribute name="appearance" source="data-appearance"/>
+                        <css name="css_classes"/>
+                    </element>
+                    <element name="image_with_text_image_mobile">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="image_with_text_image_mobile" source="src"
+                                   converter="Magento_PageBuilder/js/converter/attribute/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="image_with_text_image_desktop">
+                        <style name="border" source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="image_with_text_image_desktop" source="src"
+                                   converter="Magento_PageBuilder/js/converter/attribute/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="video">
+                        <attribute name="video_source" source="src"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc"
+                                   preview_converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc"/>
+                        <attribute name="autoplay" storage_key="autoplay" source="autoplay"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                        <attribute name="muted_video" storage_key="autoplay" source="muted"
+                                   converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                    </element>
+                    <element name="text_block_title">
+                        <html name="text_block_title" converter="Magento_PageBuilder/js/converter/html/tag-escaper"/>
+                    </element>
+                    <element name="content">
+                        <html name="content" preview_converter="Magento_PageBuilder/js/converter/html/directive"/>
+                    </element>
+                    <element name="text_year">
+                        <html name="text_year" converter="Magento_PageBuilder/js/converter/html/tag-escaper"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+        <additional_data>
+            <item name="uploaderConfig" xsi:type="array">
+                <item name="isShowImageUploadInstructions" xsi:type="boolean">false</item>
+                <item name="isShowImageUploadOptions" xsi:type="boolean">true</item>
+                <item name="maxFileSize" xsi:type="object">ImageMaxFileSizeDesktop</item>
+                <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
+                <item name="component" xsi:type="string">Magento_PageBuilder/js/form/element/image-uploader</item>
+                <item name="componentType" xsi:type="string">imageUploader</item>
+                <item name="dataScope" xsi:type="string">background_image</item>
+                <item name="formElement" xsi:type="string">imageUploader</item>
+                <item name="uploaderConfig" xsi:type="array">
+                    <item name="url" xsi:type="object">
+                        Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Uploader\SaveUrl
+                    </item>
+                </item>
+                <item name="previewTmpl" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview</item>
+                <item name="template" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview/image</item>
+                <item name="mediaGallery" xsi:type="array">
+                    <item name="openDialogUrl" xsi:type="object">
+                        Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Uploader\OpenDialogUrl
+                    </item>
+                    <item name="openDialogTitle" xsi:type="string" translate="true">Insert Images...</item>
+                    <item name="initialOpenSubpath" xsi:type="string">wysiwyg</item>
+                    <item name="storeId" xsi:type="object">
+                        Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\StoreId
+                    </item>
+                </item>
+                <item name="translations" xsi:type="array">
+                    <item name="uploadNewImage" xsi:type="string" translate="true">Upload Image</item>
+                </item>
+                <item name="validation" xsi:type="array">
+                    <item name="required-entry" xsi:type="boolean">true</item>
+                </item>
+            </item>
+            <item name="wysiwygConfig" xsi:type="array">
+                <item name="wysiwygConfigData" xsi:type="object">
+                    Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config
+                </item>
+            </item>
+        </additional_data>
+    </type>
+</config>

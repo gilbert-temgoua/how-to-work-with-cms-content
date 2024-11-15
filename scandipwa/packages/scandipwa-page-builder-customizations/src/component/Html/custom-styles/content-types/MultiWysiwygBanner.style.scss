@@ -1,0 +1,146 @@
+.pagebuilder-multi-wysiwyg-banner {
+    height: fit-content;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @include desktop {
+        height: 420px;
+        //height: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+    .pagebuilder-content-left,
+    .pagebuilder-content-right {
+        width: 100%;
+        align-items: flex-start;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        @include desktop {
+            width: 50%;
+            height: inherit;
+        }
+
+        img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+
+            @include desktop {
+                height: inherit;
+            }
+        }
+
+        .mobile-image {
+            display: block;
+
+            @include desktop {
+                display: none;
+            }
+        }
+
+        .desktop-image {
+            display: none;
+
+            @include desktop {
+                display: block;
+            }
+        }
+
+        .pagebuilder-text-content-left,
+        .pagebuilder-text-content-right {
+            min-height: inherit;
+            padding: 20px 16px;
+            box-shadow: none;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            right: 0;
+            left: 0;
+
+            @include desktop {
+                padding: 40px 48px;
+                margin: 86px 0;
+                box-shadow: 0 12px 24px -8px rgba(10, 9, 3, 0.12);
+                width: 115%;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h1 > span,
+            h2 > span,
+            h3 > span,
+            h4 > span {
+                // for headings & for 'bold', as WYSIWYG wraps content in <span> for this
+                font-style: normal;
+                font-weight: 700;
+                margin-bottom: 6px;
+                margin-top: 0;
+                text-transform: none;
+
+                @include mobile {
+                    // vvv unsets font styles not to use WYSIWYG configured
+                    font-size: 24px !important;
+                    line-height: 28px !important;
+                }
+            }
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        .pagebuilder-text-content-right {
+            @include desktop {
+                margin-right: 80px;
+                left: -27%;
+            }
+        }
+
+        .pagebuilder-text-content-left {
+            @include desktop {
+                margin-left: 80px;
+                right: -80px;
+            }
+        }
+    }
+
+    .pagebuilder-content-left {
+        @include mobile {
+            &[left_side_mobile_order='1'] {
+                order: 1;
+            }
+
+            &[left_side_mobile_order='2'] {
+                order: 2;
+            }
+        }
+    }
+
+    .pagebuilder-content-right {
+        @include mobile {
+            &[right_side_mobile_order='1'] {
+                order: 1;
+            }
+
+            &[right_side_mobile_order='2'] {
+                order: 2;
+            }
+        }
+    }
+}

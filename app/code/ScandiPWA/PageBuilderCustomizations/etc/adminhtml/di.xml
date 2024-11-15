@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Info-Note content-type -->
+    <virtualType name="AppearanceSourceInfoNote" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config">
+        <arguments>
+            <argument name="editors" xsi:type="array">
+                <item name="mage/adminhtml/wysiwyg/tiny_mce/tinymce5Adapter" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_PageBuilder/js/wysiwyg/tinymce</item>
+                    <item name="component_initializers" xsi:type="array">
+                        <item name="info_note" xsi:type="string">
+                            Magento_PageBuilder/js/content-type/text/wysiwyg/tinymce/component-initializer
+                        </item>
+                    </item>
+                    <item name="config_modifiers" xsi:type="array">
+                        <item name="info_note" xsi:type="string">
+                            Magento_PageBuilder/js/content-type/text/wysiwyg/tinymce/config-modifier
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Accordion content-type -->
+    <virtualType name="AppearanceSourceScandiwebAccordion" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config">
+        <arguments>
+            <argument name="editors" xsi:type="array">
+                <item name="mage/adminhtml/wysiwyg/tiny_mce/tinymce5Adapter" xsi:type="array">
+                    <item name="component_initializers" xsi:type="array">
+                        <item name="scandiweb_accordion" xsi:type="string">
+                            Magento_PageBuilder/js/content-type/text/wysiwyg/tinymce/component-initializer
+                        </item>
+                    </item>
+                    <item name="config_modifiers" xsi:type="array">
+                        <item name="scandiweb_accordion" xsi:type="string">
+                            Magento_PageBuilder/js/content-type/text/wysiwyg/tinymce/config-modifier
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Multi Wysiwyg banner content-type -->
+    <virtualType name="AppearanceSourceMultiWysiwygBanner" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config">
+        <arguments>
+            <argument name="editors" xsi:type="array">
+                <item name="mage/adminhtml/wysiwyg/tiny_mce/tinymce5Adapter" xsi:type="array">
+                    <item name="component_initializers" xsi:type="array">
+                        <item name="multi_wysiwyg_banner" xsi:type="string">
+                            Magento_PageBuilder/js/content-type/banner/wysiwyg/tinymce/component-initializer
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

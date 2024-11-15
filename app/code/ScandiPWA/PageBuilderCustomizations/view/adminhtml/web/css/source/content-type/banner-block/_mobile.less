@@ -1,0 +1,95 @@
+.BannerBlock {
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    position: relative;
+    max-height: fit-content;
+
+    &-Description {
+        padding: 30px 20px;
+        background-color: transparent;
+        z-index: 2;
+        width: 90%;
+
+        &Content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .Title {
+                font-size: 32px;
+                font-weight: 700;
+                margin: 20px 0;
+            }
+
+            .Subtitle {
+                font-size: 24px;
+                font-weight: 650;
+                line-height: 1;
+            }
+
+            .Text {
+                font-size: 18px;
+                line-height: 32px;
+            }
+        }
+
+        &Actions {
+            margin: 26px 0;
+            width: fit-content;
+
+            .Button {
+                text-decoration: none;
+                display: inline-block;
+                border-radius: 2px;
+                font-weight: 700;
+                text-align: center;
+                text-transform: uppercase;
+                color: var(--color-karaka);
+                transition-property: background-color, color, border;
+                will-change: background-color, color, border;
+                transition-timing-function: ease-out;
+                transition-duration: .25s;
+                padding: 12px 32px;
+                font-size: 16px;
+
+                &:hover {
+                    text-decoration: none;
+                    color: var(--color-karaka);
+                }
+            }
+        }
+    }
+
+    &-BannerImage {
+        height: 460px;
+        overflow: hidden;
+
+        .DesktopImage {
+            display: none;
+        }
+
+        .MobileImage {
+            display: block;
+            width: 100%;
+            object-position: center center;
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+}
+
+[banner_mobile_layout="MobileContentOverImage"] {
+    .BannerBlock {
+        &-Description {
+            position: absolute;
+            padding: 60px 20px;
+        }
+
+        &-BannerImage {
+            height: 600px;
+        }
+    }
+}

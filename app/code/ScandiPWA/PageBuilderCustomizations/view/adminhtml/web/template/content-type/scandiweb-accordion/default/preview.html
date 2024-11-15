@@ -1,0 +1,63 @@
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+-->
+<div
+  class="scandiweb-accordion-item pagebuilder-content-type"
+  attr="data.main.attributes"
+  ko-style="data.main.style"
+  css="data.main.css"
+  event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false"
+>
+  <div
+    class="scandiweb-accordion-title"
+    attr="data.title.attributes"
+    data-bind="liveEdit: { field: 'title', placeholder: $t('Enter Title') }"
+  ></div>
+  <div
+    class="scandiweb-accordion-content pagebuilder-content-type pagebuilder-text"
+  >
+    <div
+      if="isWysiwygSupported()"
+      class="inline-wysiwyg"
+      attr="data.content.attributes"
+      afterRender="initWysiwyg"
+    >
+      <div html="data.content.html"></div>
+    </div>
+    <div
+      if="isWysiwygSupported()"
+      class="placeholder-text"
+      ifnot="data.content.html"
+      translate="'Edit Content'"
+    ></div>
+    <div ifnot="isWysiwygSupported()">
+      <textarea
+        class="inline-wysiwyg-textarea"
+        afterRender="initTextarea"
+        event="{keyup: onTextareaKeyUp, focus: onTextareaFocus, blur: onTextareaBlur}"
+        data-bind="attr: { placeholder: $t('Edit Content') }"
+      ></textarea>
+    </div>
+    <div>
+      <a
+        if="data.main.attributes()['data-show-button'] !== 'never'"
+        attr="data.link.attributes"
+        data-bind="href: data.link().value"
+        ko-style="data.link.style"
+        css="data.link.css"
+      >
+        <span
+          attr="data.accordion_button_text.attributes"
+          data-bind="liveEdit: { field: 'accordion_button_text', placeholder: $t('Enter Button Text') }"
+        ></span>
+      </a>
+    </div>
+  </div>
+
+  <render args="getOptions().template" />
+</div>

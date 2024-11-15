@@ -1,0 +1,83 @@
+<!--
+/**
+ * @category  ScandiPWA
+ * @package   ScandiPWA/PageBuilderCustomizations
+ * @author    info <info@scandiweb.com>
+ * @copyright Copyright (c) 2023 Scandiweb, Inc (https://scandiweb.com)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="multi_wysiwyg_banner"
+          label="MultiWysiwygBanner"
+          menu_section="scandipwa"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="ScandiPWA_PageBuilderCustomizations/js/content-type/scandiweb-multi-wysiwyg-banner/preview"
+          form="pagebuilder_multi_wysiwyg_banner_form"
+          icon="icon-pagebuilder-image"
+          sortOrder="21"
+          translate="label">
+        <children default_policy="deny"/>
+        <parents default_policy="deny">
+            <parent name="row" policy="allow"/>
+            <parent name="column" policy="allow"/>
+        </parents>
+        <appearances>
+            <appearance name="default"
+                        default="true"
+                        preview_template="ScandiPWA_PageBuilderCustomizations/content-type/scandiweb-multi-wysiwyg-banner/default/preview"
+                        master_template="ScandiPWA_PageBuilderCustomizations/content-type/scandiweb-multi-wysiwyg-banner/default/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <style name="text_align" source="text_align"/>
+                        <style name="border" source="border_style" converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width" converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius" converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <style name="display" source="display" converter="Magento_PageBuilder/js/converter/style/display" preview_converter="Magento_PageBuilder/js/converter/style/preview/display"/>
+                        <style name="margins" storage_key="margins_and_padding" reader="Magento_PageBuilder/js/property/margins" converter="Magento_PageBuilder/js/converter/style/margins"/>
+                        <style name="padding" storage_key="margins_and_padding" reader="Magento_PageBuilder/js/property/paddings" converter="Magento_PageBuilder/js/converter/style/paddings"/>
+                        <attribute name="name" source="data-content-type"/>
+                        <attribute name="appearance" source="data-appearance"/>
+                        <attribute name="left_side_visibility" source="left_side_visibility"/>
+                        <attribute name="right_side_visibility" source="right_side_visibility"/>
+                        <attribute name="background_color_left" source="background_color_left"/>
+                        <attribute name="background_color_right" source="background_color_right"/>
+                        <attribute name="content_color_left" source="content_color_left"/>
+                        <attribute name="content_color_right" source="content_color_right"/>
+                        <attribute name="left_side_type" source="left_side_type"/>
+                        <attribute name="right_side_type" source="right_side_type"/>
+                        <attribute name="right_background_image_mobile" source="data-right-background-image-mobile-src" converter="Magento_PageBuilder/js/converter/attribute/src" preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="right_background_image_desktop" source="data-right-background-image-desktop-src" converter="Magento_PageBuilder/js/converter/attribute/src" preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="left_background_image_mobile" source="data-left-background-image-mobile-src" converter="Magento_PageBuilder/js/converter/attribute/src" preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="left_background_image_desktop" source="data-left-background-image-desktop-src" converter="Magento_PageBuilder/js/converter/attribute/src" preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <css name="css_classes"/>
+                    </element>
+                    <element name="left_content">
+                        <style name="content_color_left" source="background_color"/>
+                        <style name="left_side_visibility" source="display"/>
+                        <html name="left_content" preview_converter="Magento_PageBuilder/js/converter/html/directive"/>
+                    </element>
+                    <element name="right_content">
+                        <style name="content_color_right" source="background_color"/>
+                        <style name="right_side_visibility" source="display"/>
+                        <html name="right_content" preview_converter="Magento_PageBuilder/js/converter/html/directive"/>
+                    </element>
+                    <element name="left_content_wrapper">
+                        <style name="background_color_left" source="background_color"/>
+                        <attribute name="left_side_mobile_order" source="left_side_mobile_order"/>
+                    </element>
+                    <element name="right_content_wrapper">
+                        <style name="background_color_right" source="background_color"/>
+                        <attribute name="right_side_mobile_order" source="right_side_mobile_order"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+        <additional_data>
+            <item name="wysiwygConfig" xsi:type="array">
+                <item name="wysiwygConfigData" xsi:type="object">Magento\PageBuilder\Model\Config\ContentType\AdditionalData\Provider\Wysiwyg\Config </item>
+            </item>
+        </additional_data>
+    </type>
+</config>

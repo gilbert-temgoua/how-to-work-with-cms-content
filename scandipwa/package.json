@@ -15,7 +15,9 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-redux": "8.0.2",
-        "@babel/plugin-transform-typescript": "7.20.2"
+        "@babel/plugin-transform-typescript": "7.20.2",
+        "@scandiweb/adobe-page-builder": "file:packages/adobe-page-builder",
+        "@scandipwa/scandipwa-page-builder-customizations": "file:packages/scandipwa-page-builder-customizations"
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "7.21.11",
@@ -28,7 +30,9 @@
         },
         "parentTheme": "@scandipwa/scandipwa",
         "extensions": {
-            "@scandipwa/ts-server-plugin": true
+            "@scandipwa/ts-server-plugin": true,
+            "@scandiweb/adobe-page-builder": true,
+            "@scandipwa/scandipwa-page-builder-customizations": true
         }
     },
     "scripts": {

@@ -1,0 +1,117 @@
+<!--
+/**
+ * ExampleVendor_PageBuilderExampleBanner
+ *
+ * @category ExampleVendor
+ * @package  ExampleVendor_PageBuilderExampleBanner
+ * @author   John Doe <info@scandiweb.com>
+ */
+-->
+
+<div attr="data.main.attributes"
+     ko-style="data.main.style"
+     css="data.main.css"
+>
+    <div class="ExampleBanner">
+        <div class="ExampleBanner-DescriptionTitle">
+            <!-- There is no title rendered, only "data-variable-input" attribute with data options.
+                 Final title should be rendered on frontend -->
+            <widget type="ExampleBanner"
+                    attr="data.banner_title.attributes"
+            >
+            </widget>
+        </div>
+        <div class="ExampleBanner-BannerImage">
+            <img
+                attr="data.banner_image.attributes"
+            />
+        </div>
+        <div class="ExampleBanner-Description">
+            <div class="ExampleBanner-DescriptionSteps">
+                <div class="ExampleBanner-DescriptionStepWrapper">
+                    <div class="ExampleBanner-DescriptionStepContent">
+                        <span class="ExampleBanner-Icon">
+                            <img
+                                attr="data.banner_stepone_icon.attributes"
+                            />
+                        </span>
+                        <span class="ExampleBanner-DescriptionStepText">
+                            <span
+                                attr="data.banner_stepone_text.attributes"
+                                html="data.banner_stepone_text.html"
+                            ></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="ExampleBanner-DescriptionStepWrapper">
+                    <div class="ExampleBanner-DescriptionStepContent">
+                        <span class="ExampleBanner-Icon">
+                            <img
+                                attr="data.banner_steptwo_icon.attributes"
+                            />
+                        </span>
+                        <span class="ExampleBanner-DescriptionStepText">
+                            <span
+                                attr="data.banner_steptwo_text.attributes"
+                                html="data.banner_steptwo_text.html"
+                            ></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="ExampleBanner-DescriptionStepWrapper">
+                    <div class="ExampleBanner-DescriptionStepContent">
+                        <span class="ExampleBanner-Icon">
+                            <img
+                                attr="data.banner_stepthree_icon.attributes"
+                            />
+                        </span>
+                        <span class="ExampleBanner-DescriptionStepText">
+                            <span
+                                attr="data.banner_stepthree_text.attributes"
+                                html="data.banner_stepthree_text.html"
+                            ></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="ExampleBanner-DescriptionStepWrapper">
+                    <div class="ExampleBanner-DescriptionStepContent">
+                        <span class="ExampleBanner-Icon">
+                            <img
+                                attr="data.banner_stepfour_icon.attributes"
+                            />
+                        </span>
+                        <span class="ExampleBanner-DescriptionStepText">
+                            <span
+                                attr="data.banner_stepfour_text.attributes"
+                                html="data.banner_stepfour_text.html"
+                            ></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ExampleBanner-DescriptionActions">
+                <a
+                    attr="data.banner_button_href.attributes"
+                    data-bind="href: data.banner_button_href.attributes().value"
+                    class="Button"
+                >
+                    <span
+                        attr="data.banner_button_text.attributes"
+                        html="data.banner_button_text.html"
+                    ></span>
+                </a>
+                <a
+                    if="data.main.attributes()['data-show-second-button'] === '1'"
+                    attr="data.banner_second_button_href.attributes"
+                    data-bind="href: data.banner_second_button_href.attributes().value"
+                    class="Button"
+                >
+                    <span
+                        attr="data.banner_second_button_text.attributes"
+                        html="data.banner_second_button_text.html"
+                    ></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="flex flex-col gap-6 py-16 lg:py-[88px] lg:gap-8 relative overflow-hidden
+        px-4 lg:px-9 3xl:container
+        data-[background='white']:bg-white data-[background='grey']:bg-background
+        [--lines-background:#F7F7F7]
+        data-[background='grey']:[--lines-background:#FFF]"
+    attr="data.wrapper.attributes">
+    <div class="lines [&_path]:fill-[var(--lines-background)] absolute top-0 left-0">
+        <svg width="362" height="184" viewBox="0 0 362 184" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_20255_49944)">
+                <path d="M-113 -400H-73L155 152H115L-113 -400Z" />
+                <path d="M-59 -461H-19L209 91H169L-59 -461Z" />
+                <path d="M59 -368H99L327 184H287L59 -368Z" />
+            </g>
+            <defs>
+                <clipPath id="clip0_20255_49944">
+                    <rect width="362" height="184" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+    <div
+        class="lines [&_path]:fill-[var(--lines-background)] absolute bottom-0 right-0">
+        <svg width="280" height="184" viewBox="0 0 280 184" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_20255_49934)">
+                <path d="M-113 584L-72.9999 584L155 32L115 32L-113 584Z" />
+                <path
+                    d="M-58.9999 645L-18.9999 645L209 93L169 93L-58.9999 645Z" />
+            </g>
+            <defs>
+                <clipPath id="clip0_20255_49934">
+                    <rect width="280" height="184"
+                        transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 0 184)" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+    <div class="contents lg:flex px-4 justify-between font-outfit text-primary">
+        <h2
+            html="data.title_products.html"
+            class="text-h2-lg font-medium uppercase text-top-orange z-[1] w-fit-content"></h2>
+        <a attr="data.button.attributes"
+            class="btn btn-secondary order-1 mx-auto lg:mx-0 z-[1]">
+            <span data-bind="html: data.button.html" class="mr-3"></span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg" class="rotate-180">
+                <g id="Icon/Arrows">
+                    <path id="Vector"
+                        d="M14 7.33333H4.276L7.80467 3.80467L6.862 2.862L1.724 8L6.862 13.138L7.80467 12.1953L4.276 8.66667H14V7.33333Z"
+                        fill="currentColor" />
+                </g>
+            </svg>
+        </a>
+    </div>
+    <div attr="data.main.attributes" data-bind="html: data.main.html"
+        ko-style="data.main.style" css="data.main.css"></div>
+</div>

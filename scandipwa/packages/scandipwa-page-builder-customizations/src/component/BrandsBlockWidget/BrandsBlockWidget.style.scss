@@ -1,0 +1,218 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+$font-color: var(--color-karaka);
+$background-color: #eeeeee;
+$button-color: var(--primary-base-color);
+
+.BrandsBlock {
+    max-width: 1380px;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    margin: 0;
+    padding: 0;
+
+    &-Title {
+        text-align: center;
+        font-weight: 700;
+        color: $font-color;
+        font-style: normal;
+        text-transform: none;
+        font-size: 5.5vw;
+        padding: 0 12px;
+        line-height: calc(5.5vw + 4px);
+        height: auto;
+
+        @include tablet {
+            font-size: 26px;
+            line-height: 32px;
+        }
+
+        @include desktop {
+            font-size: 32px;
+            line-height: 40px;
+            padding: 0 24px;
+            margin-bottom: 45px;
+        }
+
+        &Text {
+            color: $font-color;
+        }
+    }
+
+    &-Actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        inset-block-end: 20px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        top: -5px;
+
+        :hover {
+            background-color: $background-color;
+        }
+
+        &Item {
+            display: inline-block;
+            width: 80%;
+
+            @include desktop {
+                width: 60%;
+                top: -10px;
+            }
+
+            @include wide-desktop {
+                width: 50%;
+                padding: 0 20px;
+            }
+        }
+
+        &Button {
+            text-align: center;
+            display: block;
+            color: $font-color;
+            font-size: 15px;
+            background-color: $button-color;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition-property: background-color, color, border;
+            will-change: background-color, color, border;
+            transition-timing-function: ease-out;
+            transition-duration: .25s;
+            border: 2px solid var(--primary-base-color);
+            border-radius: 2px;
+            padding: 4px 20px 2px;
+
+            &:hover {
+                background: var(--button-hover-background);
+                border-color: var(--button-hover-border);
+            }
+
+            @include desktop {
+                font-size: 14px;
+                padding: 0 22px;
+            }
+        }
+
+        &ButtonText {
+            color: $font-color;
+            line-height: 36px;
+            vertical-align: middle;
+
+            &:hover {
+                background: transparent;
+                color: var(--button-hover-color);
+            }
+
+            @include desktop {
+                line-height: 44px;
+            }
+        }
+    }
+
+
+    &-FeaturedBrands {
+        margin: 0;
+        padding: 0;
+
+        &Wrapper {
+            justify-content: flex-start;
+            display: flex;
+            background-position: left top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            padding: 0;
+            flex-direction: row;
+
+            @include desktop {
+                flex-direction: column;
+            }
+        }
+
+        &Link {
+            width: 100%;
+            height: 100%;
+        }
+
+        &Column {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: wrap;
+            min-height: inherit;
+
+            @include mobile {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+        }
+
+        &Content {
+            display: flex;
+            flex-direction: column;
+            background-position: left top;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border-style: none;
+            border-width: 1px;
+            max-height: 300px;
+            margin: 0;
+            padding: 0;
+            align-self: stretch;
+            background-color: $background-color;
+            overflow: hidden;
+            justify-content: space-around;
+            width: calc(50% - 8px);
+            flex-basis: unset;
+            margin-block-end: 12px;
+            background-attachment: scroll;
+
+            @include tablet {
+                height: initial;
+                max-height: fit-content;
+            }
+
+            @include desktop {
+                background-attachment: fixed;
+                justify-content: center;
+                width: calc(25% - 20px);
+            }
+        }
+
+        &Figure {
+            margin: 0;
+            padding: 0;
+            border-style: none;
+            width: 100%;
+            height: 100%;
+
+            &Img {
+                display: block;
+                border-style: none;
+                border-width: 1px;
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    // override CsmPage default img styles
+                    width: 100% !important;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

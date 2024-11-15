@@ -1,0 +1,229 @@
+/**
+ * @vendor      Scandipwa
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2022 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+$side-margin-offset: 16px;
+$banner-image-width: calc(100% + 2 * #{$side-margin-offset});
+
+a {
+    &:active, &:focus, &:visited {
+        color: inherit;
+    }
+}
+
+.ExampleBanner {
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+
+    @include desktop {
+        background-color: initial;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+        margin: 40px auto;
+        height: 412px;
+    }
+
+    &-Description {
+        padding: 20px 10px;
+
+        @include desktop {
+            background-color: transparent;
+            padding: 0;
+            width: 100%;
+        }
+
+        &Title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 28px;
+            position: relative;
+            margin-bottom: 24px;
+
+            @include desktop {
+                padding-block-end: 10px;
+                max-width: 38%;
+                font-size: 40px;
+                line-height: 40px;
+                position: absolute;
+                left: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        &Steps {
+            display: flex;
+            width: 100%;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+            justify-content: space-between;
+
+            @include desktop {
+                flex-wrap: nowrap;
+                margin: 80px 0 12px;
+                justify-content: flex-start;
+            }
+        }
+
+        &StepWrapper {
+            margin: 5px 0;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+
+            @include mobile {
+                width: 48%;
+            }
+
+            @include desktop {
+                margin: 0 8px;
+
+                &:first-child {
+                    margin-inline-start: 0;
+                }
+            }
+
+            @include wide-desktop {
+                margin: 0 14px;
+                text-align: center;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        &StepContent {
+            display: flex;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            background: var(--color-white);
+            box-shadow: 0 12px 24px -8px rgba(10, 9, 3, 0.12);
+            width: 100%;
+            box-sizing: border-box;
+            flex-direction: column;
+
+            @include desktop {
+                width: 170px;
+                height: 190px;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                padding: 15px 0 25px;
+            }
+
+            @include wide-desktop {
+                width: 190px;
+            }
+        }
+
+        &StepText {
+            margin: 0 0 16px 0;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            padding: 0 11px;
+
+            @include desktop {
+                margin: 0;
+                padding: 0 15px;
+            }
+
+            &_number {
+                margin: 0 5px 0;
+
+                @include desktop {
+                    margin: 0 0 7px;
+                }
+            }
+        }
+
+        &Actions {
+            margin-top: 24px;
+
+            @include desktop {
+                margin: 0;
+                padding-block-start: 30px;
+            }
+
+            [data-element='banner_button_href'] {
+                color: var(--color-karaka);
+            }
+
+            [data-element='banner_second_button_href'] {
+                color: var(--color-karaka);
+                background-color: transparent;
+                border: 2px solid var(--color-karaka);
+                border-radius: 2px;
+                margin-top: 14px;
+
+                @include desktop {
+                    margin-top: 0;
+                }
+
+                &:hover {
+                    color: var(--primary-dark-color);
+                    background-color: transparent;
+                    border: 2px solid var(--primary-dark-color);
+                }
+            }
+
+            .Button {
+                margin-inline-end: 10px;
+            }
+        }
+    }
+
+    &-Icon {
+        padding: 15px;
+
+        img {
+            width: 100%;
+            height: 63px;
+
+            @include desktop {
+                height: 80px;
+            }
+        }
+    }
+
+    &-BannerImage {
+        min-height: 200px;
+        max-height: 400px;
+        overflow: hidden;
+        object-fit: cover;
+        left: -#{$side-margin-offset};
+        width: $banner-image-width;
+        z-index: -1;
+
+        @include desktop {
+            left: unset;
+            margin: 0;
+            position: absolute;
+            max-height: none;
+            width: 60%;
+            height: 100%;
+            padding: 0;
+            background-color: initial;
+        }
+
+        img {
+            // CmsPage default values, depends on a project
+            width: 100% !important;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

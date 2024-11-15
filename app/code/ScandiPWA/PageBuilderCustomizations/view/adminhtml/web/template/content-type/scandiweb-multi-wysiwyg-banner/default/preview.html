@@ -1,0 +1,53 @@
+<div class="pagebuilder-content-type pagebuilder-multi-wysiwyg-banner"
+     event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false"
+     attr="data.main.attributes">
+        <div class="pagebuilder-content-left"
+             attr="data.left_content_wrapper.attributes"
+             event="mousedown: activateLeftEditor"
+             ko-style="Object.assign({}, data.left_content_wrapper.style(), {backgroundImage: getLeftBackgroundImage(), order: getLeftPosition()})">
+            <div class="pagebuilder-text-content-left"
+                 ko-style="Object.assign({}, data.left_content.style())">
+                <div if="isWysiwygSupported()"
+                     class="inline-wysiwyg"
+                     css="data.left_content.css"
+                     attr="data.left_content.attributes"
+                     afterRender="initLeftWysiwyg"
+                     contenteditable="true"
+                     event="mousedown: stopLeftEvent, click: activateLeftEditor, dblclick: handleDoubleClick">
+                </div>
+                <div if="isWysiwygSupported()" class="placeholder-text" ifnot="data.left_content.html" translate="'Edit Left Text'"></div>
+                <textarea ifnot="isWysiwygSupported()"
+                          class="inline-wysiwyg-textarea textarea-left"
+                          afterRender="initLeftTextarea"
+                          event="{keyup: onLeftTextareaKeyUp, focus: onLeftTextareaFocus, blur: onLeftTextareaBlur, mousedown: stopLeftEvent}"
+                          attr="placeholder: $t('Edit Left Text')">
+                </textarea>
+            </div>
+        </div>
+        <div class="pagebuilder-content-right"
+             event="mousedown: activateRightEditor"
+             attr="data.right_content_wrapper.attributes"
+             ko-style="Object.assign({}, data.right_content_wrapper.style(), {backgroundImage: getRightBackgroundImage(), order: getRightPosition()})">
+
+        <div class="pagebuilder-text-content-right"
+                 ko-style="Object.assign({}, data.right_content.style())">
+                <div if="isWysiwygSupported()"
+                     class="inline-wysiwyg"
+                     css="data.right_content.css"
+                     attr="data.right_content.attributes"
+                     afterRender="initRightWysiwyg"
+                     contenteditable="true"
+                     event="mousedown: stopRightEvent, click: activateRightEditor, dblclick: handleDoubleClick">
+                </div>
+                <div if="isWysiwygSupported()" class="placeholder-text" ifnot="data.right_content.html" translate="'Edit Right Text'"></div>
+                <textarea ifnot="isWysiwygSupported()"
+                          class="inline-wysiwyg-textarea textarea-right"
+                          afterRender="initRightTextarea"
+                          event="{keyup: onRightTextareaKeyUp, focus: onRightTextareaFocus, blur: onRightTextareaBlur, mousedown: stopRightEvent}"
+                          attr="placeholder: $t('Edit Right Text')">
+                </textarea>
+            </div>
+        </div>
+<!--    </div>-->
+    <render args="getOptions().template" ></render>
+</div>

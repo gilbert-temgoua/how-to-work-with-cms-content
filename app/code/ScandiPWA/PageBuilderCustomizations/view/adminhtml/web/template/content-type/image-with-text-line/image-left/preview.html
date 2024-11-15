@@ -1,0 +1,44 @@
+<div attr="data.main.attributes"
+     class="pagebuilder-content-type"
+     event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false">
+    <render args="getOptions().template"></render>
+
+    <div class="image-with-text-customize image-with-middle-year" css="data.main.css" ko-style="data.main.style">
+        <div class="image-with-text-image-wrapper">
+            <div class="pagebuilder-video-container" if="isHosted(data.video.attributes().src)">
+                <iframe frameborder="0" attr="data.video.attributes"
+                        if="isHosted(data.video.attributes().src)"></iframe>
+            </div>
+            <div class="image-text-image-desktop" attr="data.image_with_text_image_desktop.attributes"
+                 ifnot="data.video.attributes().src"
+                 ko-style="Object.assign(
+                {},
+                {
+                    backgroundImage: data.image_with_text_image_desktop.attributes().src ? 'url(\'' + data.image_with_text_image_desktop.attributes().src + '\')' : undefined,
+                    backgroundColor: data.main.attributes()['data-background-color'] ? data.main.attributes()['data-background-color'] : undefined
+                }
+             )"></div>
+            <div class="image-text-image-mobile"
+                 if="data.image_with_text_image_mobile.attributes().src"
+                 attr="data.image_with_text_image_mobile.attributes"
+                 ifnot="data.video.attributes().src"
+                 ko-style="Object.assign({}, {backgroundImage: data.image_with_text_image_mobile.attributes().src ? 'url(' + data.image_with_text_image_mobile.attributes().src + ')' : undefined})"></div>
+        </div>
+        <div class="image-with-text-text-middle">
+            <span class="middle-line"></span>
+            <h4 class="middle-year"
+                data-bind="liveEdit: { field: 'text_year', placeholder: $t('Edit Text Year') }">>
+            </h4>
+            <span class="middle-line last"></span>
+        </div>
+        <div class="pagebuilder-image-with-text-attribute-content content">
+            <h3 class="header-link-title"
+                data-bind="liveEdit: { field: 'text_block_title', placeholder: $t('Edit Block title') }">>
+            </h3>
+            <div if="isWysiwygSupported()" class="inline-wysiwyg" ko-style="data.content.style" css="data.content.css"
+                 attr="data.content.attributes" afterRender="initWysiwyg" event="mousedown: stopEvent">
+                <div html="data.content.html"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\PageBuilder\Model\Stage\Renderer\CmsStaticBlock">
+        <plugin name="scnadipwa_blockidentifier_plugin"
+                type="ScandiPWA\PageBuilderCustomizations\Plugin\BlockIdentifier"
+                sortOrder="1"
+                disabled="false"/>
+    </type>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="scandipwa_productlistwidget_plugin"
+                type="ScandiPWA\PageBuilderCustomizations\Plugin\ProductListWidgetPlugin"
+                sortOrder="2"
+                disabled="false"/>
+    </type>
+    <type name="Magento\PageBuilder\Model\Wysiwyg\DefaultConfigProvider">
+        <plugin name="scandipwa_pagebuilder_wysiwyg_plugin"
+                type="ScandiPWA\PageBuilderCustomizations\Plugin\PageBuilderWysiwygPlugin"
+                sortOrder="3"
+                disabled="false"/>
+    </type>
+    <type name="ScandiPWA\PageBuilderCustomizations\Plugin\BlockIdentifier">
+        <arguments>
+            <argument name="blockCollectionFactory" xsi:type="object">
+                Magento\Cms\Model\ResourceModel\Block\CollectionFactory
+            </argument>
+            <argument name="renderers" xsi:type="array">
+                <item name="default" xsi:type="object">Magento\PageBuilder\Model\Stage\Renderer\Block</item>
+                <item name="products" xsi:type="object">Magento\PageBuilder\Model\Stage\Renderer\WidgetDirective</item>
+                <item name="block" xsi:type="object">Magento\PageBuilder\Model\Stage\Renderer\CmsStaticBlock</item>
+                <item name="htmlfilter" xsi:type="object">Magento\PageBuilder\Model\Stage\HtmlFilter</item>
+                <item name="template" xsi:type="object">Magento\PageBuilder\Model\Filter\Template</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- parameter validation for variable title content type -->
+    <virtualType name="DefaultWYSIWYGValidator">
+        <arguments>
+            <argument name="allowedAttributes" xsi:type="array">
+                <item name="data-variable-input" xsi:type="string">data-variable-input</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- 'ImageTextLine blocks': image-right & image-left   -->
+    <virtualType name="AppearanceSourceImageTextLine" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">image-right</item>
+                    <item name="title" xsi:type="string">Text Left</item>
+                    <item name="icon" xsi:type="string">
+                        Magento_PageBuilder::css/images/content-type/banner/appearance/collage-left.svg
+                    </item>
+                </item>
+                <item name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">image-left</item>
+                    <item name="title" xsi:type="string">Text Right</item>
+                    <item name="icon" xsi:type="string">
+                        Magento_PageBuilder::css/images/content-type/banner/appearance/collage-right.svg
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Banner block  -->
+    <virtualType name="AppearanceSourceBannerBlock" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Brands block  -->
+    <virtualType name="AppearanceSourceBrandsBlock" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Category block  -->
+    <virtualType name="AppearanceSourceCategoryBlock" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Newsletter block  -->
+    <virtualType name="AppearanceSourceNewsletterBlock" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Social block  -->
+    <virtualType name="AppearanceSourceSocialBlock" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Example Banner block  -->
+    <virtualType name="AppearanceSourceExampleBanner" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--  Accordion block  -->
+    <type name="Magento\PageBuilder\Model\WidgetInitializerConfig">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="scandiweb_accordion" xsi:type="array">
+                    <item name="default" xsi:type="array">
+                        <item name="component" xsi:type="string">
+                            ScandiPWA_PageBuilderCustomizations/js/content-type/scandiweb-accordion/appearance/default/widget
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

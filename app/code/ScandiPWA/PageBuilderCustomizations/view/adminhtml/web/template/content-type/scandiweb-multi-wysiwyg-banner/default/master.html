@@ -1,0 +1,59 @@
+<div class="pagebuilder-multi-wysiwyg-banner" attr="data.main.attributes" ko-style="data.main.style" css="data.main.css">
+    <div class="pagebuilder-content-left"
+         css="data.left_content_wrapper.css"
+         attr="data.left_content_wrapper.attributes"
+         ko-style="data.left_content_wrapper.style">
+        <!-- ko if: data.main.attributes()['left_side_type'] !== '0' -->
+        <img if="data.main.attributes()['data-left-background-image-mobile-src']"
+             class="mobile-image"
+             data-bind="attr:{
+                src: data.main.attributes()['data-left-background-image-mobile-src'] ? data.main.attributes()['data-left-background-image-mobile-src'] : undefined,
+                alt: 'Left Background Desktop Image',
+                title: 'Left Background Desktop Image'
+             }"/>
+        <img if="data.main.attributes()['data-left-background-image-desktop-src']"
+             class="desktop-image"
+             data-bind="attr:{
+                src: data.main.attributes()['data-left-background-image-desktop-src'] ? data.main.attributes()['data-left-background-image-desktop-src'] : undefined,
+                alt: 'Left Background Mobile Image',
+                title: 'Left Background Mobile Image'
+             }"/>
+        <!-- /ko -->
+        <!-- ko if: data.main.attributes()['left_side_visibility'] !== 'none' -->
+        <!-- ko with: data.left_content -->
+        <!-- ko with: {attributes: attributes, style: style, css: css, dataContentUnsanitizedHtml: html} -->
+        <div class="pagebuilder-text-content-left" attr="attributes" ko-style="style" css="css" html="dataContentUnsanitizedHtml"></div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <div class="pagebuilder-content-right"
+         css="data.right_content_wrapper.css"
+         attr="data.right_content_wrapper.attributes"
+         ko-style="data.right_content_wrapper.style">
+        <!-- ko if: data.main.attributes()['right_side_type'] !== '0' -->
+        <img if="data.main.attributes()['data-right-background-image-mobile-src']"
+             class="mobile-image"
+             data-bind="attr:{
+                src: data.main.attributes()['data-right-background-image-mobile-src'] ? data.main.attributes()['data-right-background-image-mobile-src'] : undefined,
+                alt: 'Right Background Desktop Image',
+                title: 'Right Background Desktop Image'
+             }"/>
+        <img if="data.main.attributes()['data-right-background-image-desktop-src']"
+             class="desktop-image"
+             data-bind="attr:{
+                src: data.main.attributes()['data-right-background-image-desktop-src'] ? data.main.attributes()['data-right-background-image-desktop-src'] : undefined,
+                alt: 'Right Background Mobile Image',
+                title: 'Right Background Mobile Image'
+             }"/>
+        <!-- /ko -->
+        <!-- ko if: data.main.attributes()['right_side_visibility'] !== 'none' -->
+        <!-- ko with: data.right_content -->
+        <!-- ko with: {attributes: attributes, style: style, css: css, dataContentUnsanitizedHtml: html} -->
+        <div class="pagebuilder-text-content-right" attr="attributes" ko-style="style" css="css" html="dataContentUnsanitizedHtml"></div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+

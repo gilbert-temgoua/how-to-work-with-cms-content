@@ -1,0 +1,142 @@
+/**
+ * @vendor      Scandiweb
+ * @theme       Scandipwa_pwa
+ * @author      Scandiweb <info@scandiweb.com>
+ * @copyright   Copyright (c) 2023 Scandiweb, Ltd (https://scandiweb.com)
+ */
+
+:root {
+    --social-block-background-color: #eeeeee;
+    --social-block-font-color: var(--color-karaka);
+}
+
+.SocialBlock {
+    display: flex;
+    background-color: var(--social-block-background-color);
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &-SocialMedia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 32px 16px 8px;
+        width: 100%;
+
+        @include desktop {
+            padding: 64px;
+        }
+
+        &Title {
+            color: var(--social-block-font-color);
+            margin-inline: auto;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+
+            @include desktop {
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+
+        &Slogan {
+            color: var(--social-block-font-color);
+            padding: 5px;
+            margin: 11px 0 0 0;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            max-width: 600px;
+
+            @include desktop {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        &List {
+            display: flex;
+            margin: 24px 0 0 0;
+            width: 100%;
+
+            @include desktop {
+                width: 80%;
+                max-width: 960px;
+            }
+
+            &Wrapper {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-block-start: 10px;
+                margin-block-end: 0;
+                padding: 0;
+                justify-content: center;
+                margin-inline: auto;
+                width: 100%;
+            }
+
+            &Content {
+                padding: 0;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 24px;
+                width: 95px;
+
+                @include desktop {
+                    width: 20%;
+                    margin-bottom: 0;
+                }
+            }
+
+            &Text {
+                color: var(--social-block-font-color);
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+
+                @include desktop {
+                    font-size: 18px;
+                }
+
+                &Holder {
+                    position: relative;
+                    margin: 16px 0 0;
+                    vertical-align: middle;
+                }
+            }
+
+            &Figure {
+                width: 64px;
+                height: 64px;
+                background: var(--color-white);
+                box-shadow: 0 12px 24px -8px rgba(10, 9, 3, 0.12);
+                order: 0;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+                padding: 15px;
+
+                &:hover {
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+
+                a {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

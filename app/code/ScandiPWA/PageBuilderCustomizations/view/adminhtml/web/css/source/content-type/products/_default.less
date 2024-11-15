@@ -1,0 +1,66 @@
+// Grid styles when added to row
+
+.pagebuilder-row {
+    [data-content-type="products"] {
+        padding: 20px;
+
+        .block-products-list.grid {
+            .block-content {
+                .grid > .widget-product-grid {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    .product-item {
+                        .action.primary {
+                            background: var(--primary-base-button-color);
+                            border: 2px solid var(--primary-base-button-color);
+                            border-radius: 2px;
+                            color: #ffffff;
+                            text-transform: uppercase;
+                        }
+
+                        .actions-secondary {
+                            padding-left: 4px;
+
+                            .action {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Grid styles when added to column
+
+.column-container {
+    [data-content-type="products"] {
+        margin-bottom: 0;
+
+        .block-products-list.grid {
+            .block-content {
+                .grid > .widget-product-grid {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    flex-wrap: wrap;
+
+                    .product-item {
+                        width: 50%;
+                        margin-left: 0;
+
+                        .action.primary {
+                            background: var(--primary-base-button-color);
+                            border: 2px solid var(--primary-base-button-color);
+                            border-radius: 2px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

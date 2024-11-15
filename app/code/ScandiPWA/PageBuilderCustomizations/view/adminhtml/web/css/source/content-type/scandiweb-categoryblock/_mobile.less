@@ -1,0 +1,116 @@
+.mobile-viewport {
+    .CategoryBlock {
+        width: 100%;
+        padding: 0 10px;
+
+        &-Column {
+            &FirstGrid {
+                flex-basis: 50%;
+                left: -10px;
+                z-index: 2;
+                padding: 0 10px 0 20px;
+            }
+
+            &SecondGrid {
+                flex-basis: 50%;
+                z-index: 2;
+                padding: 0 20px 0 10px;
+            }
+
+            &Hidden {
+                min-height: auto;
+                padding: 0;
+                width: 100%;
+            }
+
+            &Visible {
+                flex-basis: 100%;
+                margin-bottom: 12px;
+            }
+
+            &Banner {
+                height: 480px;
+                min-height: auto;
+                flex-basis: 100%;
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        &-Title {
+            &Block {
+                padding: 0;
+                margin: 16px 0;
+            }
+        }
+
+        &-Subtitle {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        &-Description {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        &-Image {
+            &Placeholder {
+                height: 100%;
+            }
+        }
+
+        &-Button {
+            font-size: 24px;
+            padding: 14px 32px;
+
+            &Holder {
+                margin: 24px 0 0 16px;
+
+                a {
+                    position: relative;
+                }
+            }
+        }
+
+        &-Category {
+            &Holder {
+                margin: 20px 0 0;
+            }
+
+            &Caption {
+                &First,
+                &Second,
+                &Third,
+                &Fourth {
+                    top: 50%;
+                    left: 50%;
+                    font-size: 32px;
+                    width: 70%;
+                }
+            }
+
+            &ImageLink {
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        &-ShopButton {
+            padding: 14px 32px;
+            font-size: 24px;
+
+            &Holder {
+                margin: 34px 0 40px;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            &Item {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
