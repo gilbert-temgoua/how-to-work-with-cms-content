@@ -1,0 +1,3 @@
+# Scandiweb_PageBuilderCategoriesAndProducts
+
+Page Builder content type for PageBuilderCategoriesAndProducts.

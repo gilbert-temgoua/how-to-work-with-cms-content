@@ -1,0 +1,19 @@
+{
+    "name": "Scandiweb_PageBuilderImageAndWysiwyg",
+    "version": "0.0.1",
+    "description": "Page Builder content type for PageBuilderImageAndWysiwyg.",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-page-builder": "*",
+        "php": "~8.2"
+    },
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}
